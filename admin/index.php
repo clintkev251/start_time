@@ -82,6 +82,6 @@ if(isset($_POST['submit'])){
         $i++;
     }
     fclose($myfile);
-    header("Refresh:0");
+    header("Location:https://start-time.com");
 }
 ?>
