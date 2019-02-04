@@ -70,6 +70,7 @@ body, html {
 </html>
 <?php
 if(isset($_POST['submit'])){
+    echo "<meta http-equiv='refresh' content='0'>";
     $myfile = fopen("start.txt", "w");
     $to_write[0] = $_POST['date'];
     $to_write[1] = $_POST['prime'];
