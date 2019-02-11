@@ -7,7 +7,9 @@
         $datetime = new DateTime('tomorrow');
         //$tomorrow = $datetime->format('m-d-Y');
         $myFile = "admin/start.txt";
+        $startOB = "admin/startOB.txt";
         $lines = file($myFile);
+        $linesOB = file($startOB);
         $tomorrow = $lines[0];
         ?>
         <meta charset="utf-8">
@@ -65,10 +67,14 @@ body, html {
     <body>
         <div class="bg-image"></div>
         <div class="bg-text">
-        <h2 style="text-align:center;">Preload start time for <?php echo($tomorrow)?></h2>
-        <h3 style="text-align:center">Prime: <?php echo($lines[1])?>AM</h3>
-        <h3 style="text-align:center">Start: <?php echo($lines[2])?> AM</h3>
-        <h3 style="text-align:center"><?php echo($lines[3])?>
+        <h2 style="text-align:center;">Preload start time for <?php echo($tomorrow);?></h2>
+        <h3 style="text-align:center">Prime: <?php echo($lines[1]);?>AM</h3>
+        <h3 style="text-align:center">Start: <?php echo($lines[2]);?> AM</h3>
+        <h3 style="text-align:center"><?php echo($lines[3]);?>
+        <h2 style="text-align:center;">Preload start time for <?php echo($tomorrow);?></h2>
+        <h3 style="text-align:center">Prime: <?php echo($lines[1]);?>AM</h3>
+        <h3 style="text-align:center">Start: <?php echo($lines[2]);?> AM</h3>
+        <h3 style="text-align:center"><?php echo($lines[3]);?>            
         </div>
     </body>
     
