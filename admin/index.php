@@ -5,6 +5,8 @@
         <?php
         $file = fopen("start.txt", "r");
         $lines = file("start.txt");
+        $fileOB = fopen("startOB.txt", "r");
+        $linesOB = file("startOB.txt");
         ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -59,11 +61,17 @@ body, html {
     <div class="bg-image"></div>
         <div class="bg-text">
         <h2>Edit the following fields below:</h2>
+            <h3>Preload:</h3>
             <form method="post" action="index.php">
                 Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
                 Prime: <input type="text" value="<?php echo($lines[1]);?>" text = "test" name="prime"></br></br>
                 Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"></br></br>
                 Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
+            <h3>Outbound:</h3>
+                Date: <input type="text" value ="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
+                Prime: <input type="text" value="<?php echo($linesOB[1]);?>" name="primeOB"></br></br>
+                Start: <input type="text" value="<?php echo($linesOB[2]);?>"  name="startOB"></br></br>
+                Notes: <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
     </body>
@@ -83,6 +91,18 @@ if(isset($_POST['submit'])){
         $i++;
     }
     fclose($myfile);
-    header("Location:https://start-time.com");
+    $myfile = fopen("startOB.txt", "w");
+    $to_write[0] = $_POST['dateOB'];
+    $to_write[1] = $_POST['primeOB'];
+    $to_write[2] = $_POST['startOB'];
+    $to_write[3] = $_POST['notesOB'];
+    $i = 0;
+    while($i < count($to_write)){
+        fwrite($myfile, $to_write[$i]);
+        fwrite($myfile, "\n");
+        $i++;
+    }
+    fclose($myfile);
+    #header("Location:https://start-time.com");
 }
 ?>
