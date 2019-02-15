@@ -54,9 +54,47 @@ body, html {
   padding: 20px;
   text-align: center;
 }
+
+.myButton {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c74545), color-stop(1, #bd402a));
+	background:-moz-linear-gradient(top, #c74545 5%, #bd402a 100%);
+	background:-webkit-linear-gradient(top, #c74545 5%, #bd402a 100%);
+	background:-o-linear-gradient(top, #c74545 5%, #bd402a 100%);
+	background:-ms-linear-gradient(top, #c74545 5%, #bd402a 100%);
+	background:linear-gradient(to bottom, #c74545 5%, #bd402a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74545', endColorstr='#bd402a',GradientType=0);
+	background-color:#c74545;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #ab1e19;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:7px 7px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #662828;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bd402a), color-stop(1, #c74545));
+	background:-moz-linear-gradient(top, #bd402a 5%, #c74545 100%);
+	background:-webkit-linear-gradient(top, #bd402a 5%, #c74545 100%);
+	background:-o-linear-gradient(top, #bd402a 5%, #c74545 100%);
+	background:-ms-linear-gradient(top, #bd402a 5%, #c74545 100%);
+	background:linear-gradient(to bottom, #bd402a 5%, #c74545 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bd402a', endColorstr='#c74545',GradientType=0);
+	background-color:#bd402a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}    
 </style>        
     </head>
-    <a href="http://start-time.com/">Home</a>
+    <a href="/" class="myButton">Home</a>
     <body>
     <div class="bg-image"></div>
         <div class="bg-text">
