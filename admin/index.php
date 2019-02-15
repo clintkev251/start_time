@@ -97,13 +97,14 @@ body, html {
     <div class="bg-image"></div>
         <div class="bg-text">
         <h2>Edit the following fields below:</h2>
-            <form method="post" action="index.php">
+            <form method="post" action="index.php" autocomplete="off">
                 Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
                 Prime: <input type="text" value="<?php echo($lines[1]);?>" text = "test" name="prime"></br></br>
                 Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"></br></br>
                 Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
+        </div>
     </body>
 </html>
 <?php
