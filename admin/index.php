@@ -99,8 +99,8 @@ body, html {
     <div class="bg-image"></div>
         <div class="bg-text">
         <h2>Edit the following fields below:</h2>
+            <form method="post" action="index.php" autocomplete="off">
             <h3>Preload:</h3>
-            <form method="post" action="index.php">
                 Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
                 Prime: <input type="text" value="<?php echo($lines[1]);?>" text = "test" name="prime"></br></br>
                 Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"></br></br>
@@ -112,6 +112,7 @@ body, html {
                 Notes: <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
+        </div>
     </body>
 </html>
 <?php
