@@ -6,7 +6,9 @@
     <!-- TODO: Selectable day?? -->
     <?php ; 
         $myFile = "admin/start.txt";
+        $startOB = "admin/startOB.txt";
         $lines = file($myFile);
+        $linesOB = file($startOB);
         $tomorrow = $lines[0];
         ?>
     <meta charset="utf-8">
@@ -155,6 +157,12 @@
         <h3 style="text-align:center">
             <?php echo($lines[3]);?>
         </h3>
+        <h2 style="text-align:center;">Outbound start time for <?php echo($linesOB[0]);?></h2>
+        <?php if($linesOB[1] != "\n"): ?>
+        <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>
+        <?php endif ?>
+        <h3 style="text-align:center">Start: <?php echo($linesOB[2]);?> PM</h3>
+        <h3 style="text-align:center"><?php echo($linesOB[3]);?>     
     </div>
 </body>
 
