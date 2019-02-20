@@ -102,13 +102,13 @@ body, html {
             <form method="post" action="index.php" autocomplete="off">
             <h3>Preload:</h3>
                 Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
-                Prime: <input type="text" value="<?php echo($lines[1]);?>" text = "test" name="prime"></br></br>
-                Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"></br></br>
+                Prime: <input type="text" value="<?php echo($lines[1]);?>" name="prime"> AM</br></br>
+                Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"> AM</br></br>
                 Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
                 Date: <input type="text" value ="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
-                Prime: <input type="text" value="<?php echo($linesOB[1]);?>" name="primeOB"></br></br>
-                Start: <input type="text" value="<?php echo($linesOB[2]);?>"  name="startOB"></br></br>
+                Prime: <input type="text" value="<?php echo($linesOB[1]);?>" name="primeOB"> AM</br></br>
+                Start: <input type="text" value="<?php echo($linesOB[2]);?>"  name="startOB"> AM</br></br>
                 Notes: <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
