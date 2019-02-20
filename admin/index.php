@@ -142,6 +142,5 @@ if(isset($_POST['submit'])){
         $i++;
     }
     fclose($myfile);
-    #header("Location:https://start-time.com");
 }
 ?>
