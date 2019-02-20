@@ -55,19 +55,6 @@
             height: 100%;
     </head>
     <a href="/admin/">Admin</a>
-    <body>
-        <div class="bg-image"></div>
-        <div class="bg-text">
-        <h2 style="text-align:center;">Preload start time for <?php echo($tomorrow);?></h2>
-        <h3 style="text-align:center">Prime: <?php echo($lines[1]);?>AM</h3>
-        <h3 style="text-align:center">Start: <?php echo($lines[2]);?> AM</h3>
-        <h3 style="text-align:center"><?php echo($lines[3]);?>
-        <h2 style="text-align:center;">Outbound start time for <?php echo($linesOB[0]);?></h2>
-        <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>
-        <h3 style="text-align:center">Start: <?php echo($linesOB[2]);?> PM</h3>
-        <h3 style="text-align:center"><?php echo($linesOB[3]);?>            
-        </div>
-    </body>
     
 </html>
 
