@@ -75,7 +75,26 @@
             font-weight: bold;
             border: 3px solid #f1f1f1;
             position: absolute;
-            top: 50%;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bg-textRel {
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/opacity/see-through */
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 65%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
@@ -144,6 +163,8 @@
         <h3 style="text-align:center">
             <?php echo($lines[3]);?>
         </h3>
+        </div>
+        <div class="bg-textRel">
         <h2 style="text-align:center;">Outbound start time for <?php echo($linesOB[0]);?></h2>
         <?php if($linesOB[1] != "\n"): ?>
         <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>

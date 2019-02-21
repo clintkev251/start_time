@@ -107,8 +107,8 @@ body, html {
                 Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
                 Date: <input type="text" value ="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
-                Prime: <input type="text" value="<?php echo($linesOB[1]);?>" name="primeOB"> AM</br></br>
-                Start: <input type="text" value="<?php echo($linesOB[2]);?>"  name="startOB"> AM</br></br>
+                Prime: <input type="text" value="<?php echo($linesOB[1]);?>" name="primeOB"> PM</br></br>
+                Start: <input type="text" value="<?php echo($linesOB[2]);?>"  name="startOB"> PM</br></br>
                 Notes: <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
