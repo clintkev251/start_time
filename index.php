@@ -80,7 +80,7 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 80%;
-            padding: 1.7%;
+            padding: .5%;
             text-align: center;
         }
 
@@ -99,7 +99,7 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 80%;
-            padding: 1.7%;
+            padding: .5%;
             text-align: center;
         }
 
