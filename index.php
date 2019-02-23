@@ -80,7 +80,7 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 80%;
-            padding: .5%;
+            padding: 1%;
             text-align: center;
         }
 
@@ -94,12 +94,12 @@
             font-weight: bold;
             border: 3px solid #f1f1f1;
             position: absolute;
-            top: 65%;
+            top: 80%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 80%;
-            padding: .5%;
+            padding: 1%;
             text-align: center;
         }
 
@@ -169,8 +169,14 @@
         <?php if($linesOB[1] != "\n"): ?>
         <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>
         <?php endif ?>
-        <h3 style="text-align:center">Start: <?php echo($linesOB[2]);?> PM</h3>
-        <h3 style="text-align:center"><?php echo($linesOB[3]);?>     
+        <?php if($linesOB[2] != "\n"): ?>
+        <h3 style="text-align:center">Vanlines: <?php echo($linesOB[2]);?>PM</h3>
+        <?php endif ?>
+        <?php if($linesOB[3] != "\n"): ?>
+        <h3 style="text-align:center">Smalls: <?php echo($linesOB[3]);?>PM</h3>
+        <?php endif ?>
+        <h3 style="text-align:center">Start: <?php echo($linesOB[4]);?> PM</h3>
+        <h3 style="text-align:center"><?php echo($linesOB[5]);?>     
     </div>
 </body>
 
