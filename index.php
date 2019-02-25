@@ -6,7 +6,9 @@
     <!-- TODO: Selectable day?? -->
     <?php ; 
         $myFile = "admin/start.txt";
+        $startOB = "admin/startOB.txt";
         $lines = file($myFile);
+        $linesOB = file($startOB);
         $tomorrow = $lines[0];
         ?>
     <meta charset="utf-8">
@@ -51,6 +53,10 @@
 
             /* Full height */
             height: 100%;
+    </head>
+    <a href="/admin/">Admin</a>
+    
+</html>
 
             /* Center and scale the image nicely */
             background-position: center;
@@ -69,12 +75,31 @@
             font-weight: bold;
             border: 3px solid #f1f1f1;
             position: absolute;
-            top: 50%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 80%;
-            padding: 20px;
+            padding: 1%;
+            text-align: center;
+        }
+
+        .bg-textRel {
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/opacity/see-through */
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 1%;
             text-align: center;
         }
 
@@ -138,6 +163,20 @@
         <h3 style="text-align:center">
             <?php echo($lines[3]);?>
         </h3>
+        </div>
+        <div class="bg-textRel">
+        <h2 style="text-align:center;">Outbound start time for <?php echo($linesOB[0]);?></h2>
+        <?php if($linesOB[1] != "\n"): ?>
+        <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>
+        <?php endif ?>
+        <?php if($linesOB[2] != "\n"): ?>
+        <h3 style="text-align:center">Vanlines: <?php echo($linesOB[2]);?>PM</h3>
+        <?php endif ?>
+        <?php if($linesOB[3] != "\n"): ?>
+        <h3 style="text-align:center">Smalls: <?php echo($linesOB[3]);?>PM</h3>
+        <?php endif ?>
+        <h3 style="text-align:center">Start: <?php echo($linesOB[4]);?> PM</h3>
+        <h3 style="text-align:center"><?php echo($linesOB[5]);?>     
     </div>
 </body>
 

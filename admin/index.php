@@ -5,6 +5,8 @@
         <?php
         $file = fopen("start.txt", "r");
         $lines = file("start.txt");
+        $fileOB = fopen("startOB.txt", "r");
+        $linesOB = file("startOB.txt");
         ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -98,10 +100,18 @@ body, html {
         <div class="bg-text">
         <h2>Edit the following fields below:</h2>
             <form method="post" action="index.php" autocomplete="off">
+            <h3>Preload:</h3>
                 Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
-                Prime: <input type="text" value="<?php echo($lines[1]);?>" text = "test" name="prime"></br></br>
-                Start: <input type="text" value="<?php echo($lines[2]);?>"  name="start"></br></br>
+                Prime: <input type="text" maxlength="5"style="width: 130px;"  value="<?php echo($lines[1]);?>" name="prime"> AM</br></br>
+                Start: <input type="text" maxlength="5"style="width: 130px;"  value="<?php echo($lines[2]);?>"  name="start"> AM</br></br>
                 Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
+            <h3>Outbound:</h3>
+                Date: <input type="text" value ="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
+                Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>" name="primeOB"> PM</br></br>
+                Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"  name="vanlineOB"> PM</br></br>
+                Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"  name="smallsOB"> PM</br></br>
+                Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"  name="startOB"> PM</br></br>
+                Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
                 <input type="submit" name="submit" value="Save">
             </form>
         </div>
@@ -122,6 +132,19 @@ if(isset($_POST['submit'])){
         $i++;
     }
     fclose($myfile);
-    #header("Location:https://start-time.com");
+    $myfile = fopen("startOB.txt", "w");
+    $to_write[0] = $_POST['dateOB'];
+    $to_write[1] = $_POST['primeOB'];
+    $to_write[2] = $_POST['vanlineOB'];
+    $to_write[3] = $_POST['smallsOB'];
+    $to_write[4] = $_POST['startOB'];
+    $to_write[5] = $_POST['notesOB'];
+    $i = 0;
+    while($i < count($to_write)){
+        fwrite($myfile, $to_write[$i]);
+        fwrite($myfile, "\n");
+        $i++;
+    }
+    fclose($myfile);
 }
 ?>
