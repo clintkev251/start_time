@@ -72,7 +72,8 @@
             /* Black w/opacity/see-through */
             font-family: 'Roboto', sans-serif;
             color: white;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: normal;
             border: 3px solid #f1f1f1;
             position: absolute;
             top: 30%;
@@ -91,13 +92,14 @@
             /* Black w/opacity/see-through */
             font-family: 'Roboto', sans-serif;
             color: white;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: normal;
             border: 3px solid #f1f1f1;
             position: absolute;
             top: 80%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2;
+            z-index: 0;
             width: 80%;
             padding: 1%;
             text-align: center;
