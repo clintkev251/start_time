@@ -73,6 +73,7 @@
             font-size: 14px;
             font-weight: normal;
             border: 3px solid #f1f1f1;
+            border-radius: 10px;
             position: absolute;
             top: 30%;
             left: 50%;
@@ -93,6 +94,7 @@
             font-size: 14px;
             font-weight: normal;
             border: 3px solid #f1f1f1;
+            border-radius: 10px;
             position: absolute;
             top: 80%;
             left: 50%;
