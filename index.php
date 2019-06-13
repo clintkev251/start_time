@@ -53,10 +53,8 @@
 
             /* Full height */
             height: 100%;
-    </head>
-    <a href="/admin/">Admin</a>
-    
-</html>
+
+
 
             /* Center and scale the image nicely */
             background-position: center;
@@ -127,6 +125,8 @@
             padding: 7px 7px;
             text-decoration: none;
             text-shadow: 0px 1px 0px #2f6627;
+            position: absolute;
+            z-index: 1;
         }
 
         .myButton:hover {
@@ -141,8 +141,8 @@
         }
 
         .myButton:active {
-            position: relative;
-            top: 1px;
+            position: absolute;
+            z-index: 1;
         }
 
     </style>
