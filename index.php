@@ -59,16 +59,6 @@
             background-attachment: fixed;
         }
 
-        .bg-image {
-            /* The image used */
-            background-image: url("/img/background.png");
-
-            /* Add the blur effect */
-            filter: blur(8px);
-            -webkit-filter: blur(3px);
-            background-attachment: fixed
-        }
-
         .mdc-card {
             margin: 2%;
             padding: 1%;
@@ -103,7 +93,7 @@
     </style>
 
 </head>
-<button class="mdc-button mdc-button--raised"><a href="/admin">Admin</a></button>
+<a class="mdc-button mdc-button--raised" href="/admin/">Admin</a>
 
 <body>
 

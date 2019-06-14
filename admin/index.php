@@ -1,121 +1,101 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Time Administration</title>
-        <?php
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>
+        import {
+            MDCRipple
+        } from '@material/ripple';
+
+        const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
+    </script>
+    <title>Start Time Administration</title>
+    <?php
         $file = fopen("start.txt", "r");
         $lines = file("start.txt");
         $fileOB = fopen("startOB.txt", "r");
         $linesOB = file("startOB.txt");
         ?>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: "Roboto", "serif";
+        }
+        h2,
+        h3 {
+            font-family: "Roboto", "serif"
+        }
 
-* {
-  box-sizing: border-box;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        body {
+            background-image: url("/admin/6UaXRIr.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        * {
+            box-sizing: border-box;
+        }
 
-.bg-image {
-  /* The image used */
-  background-image: url("6UaXRIr.jpg");
-  
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  
-  /* Full height */
-  height: 100%; 
-  
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+        .bg-image {
+            /* The image used */
+            background-image: url("6UaXRIr.jpg");
+            filter: blur(8px);
+            -webkit-filter: blur(3px);
+            background-attachment: fixed
+        }
+        .mdc-card {
+            margin: 2%;
+            padding: 1%;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+        }
 
-/* Position text in the middle of the page/image */
-.bg-text {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  font-weight: bold;
-  border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 80%;
-  padding: 20px;
-  text-align: center;
-}
+        .mdc-button__label {
+            font-family: "Roboto", "sarif";
+        }
+    </style>
+</head>
+<a href="/" class="mdc-button mdc-button--raised" style="margin: 0.5%;">Home</a>
 
-.myButton {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c74545), color-stop(1, #bd402a));
-	background:-moz-linear-gradient(top, #c74545 5%, #bd402a 100%);
-	background:-webkit-linear-gradient(top, #c74545 5%, #bd402a 100%);
-	background:-o-linear-gradient(top, #c74545 5%, #bd402a 100%);
-	background:-ms-linear-gradient(top, #c74545 5%, #bd402a 100%);
-	background:linear-gradient(to bottom, #c74545 5%, #bd402a 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74545', endColorstr='#bd402a',GradientType=0);
-	background-color:#c74545;
-	-moz-border-radius:9px;
-	-webkit-border-radius:9px;
-	border-radius:9px;
-	border:1px solid #ab1e19;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:12px;
-	font-weight:bold;
-	padding:7px 7px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #662828;
-}
-.myButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bd402a), color-stop(1, #c74545));
-	background:-moz-linear-gradient(top, #bd402a 5%, #c74545 100%);
-	background:-webkit-linear-gradient(top, #bd402a 5%, #c74545 100%);
-	background:-o-linear-gradient(top, #bd402a 5%, #c74545 100%);
-	background:-ms-linear-gradient(top, #bd402a 5%, #c74545 100%);
-	background:linear-gradient(to bottom, #bd402a 5%, #c74545 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bd402a', endColorstr='#c74545',GradientType=0);
-	background-color:#bd402a;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}    
-</style>        
-    </head>
-    <a href="/" class="myButton">Home</a>
-    <body>
-    <div class="bg-image"></div>
-        <div class="bg-text">
+<body>
+    <div class="mdc-card">
         <h2>Edit the following fields below:</h2>
-            <form method="post" action="index.php" autocomplete="off">
+        <form method="post" action="index.php" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
-                Date: <input type="text" value ="<?php echo($lines[0]);?>" name="date"></br></br>
-                Prime: <input type="text" maxlength="5"style="width: 130px;"  value="<?php echo($lines[1]);?>" name="prime"> AM</br></br>
-                Start: <input type="text" maxlength="5"style="width: 130px;"  value="<?php echo($lines[2]);?>"  name="start"> AM</br></br>
-                Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
+            Date: <input type="text" value="<?php echo($lines[0]);?>" name="date"></br></br>
+            Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="prime">
+            AM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="start">
+            AM</br></br>
+            Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
-                Date: <input type="text" value ="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
-                Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>" name="primeOB"> PM</br></br>
-                Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"  name="vanlineOB"> PM</br></br>
-                Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"  name="smallsOB"> PM</br></br>
-                Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"  name="startOB"> PM</br></br>
-                Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
-                <input type="submit" name="submit" value="Save">
-            </form>
-        </div>
-    </body>
+            Date: <input type="text" value="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
+            Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"
+                name="primeOB"> PM</br></br>
+            Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"
+                name="vanlineOB"> PM</br></br>
+            Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"
+                name="smallsOB"> PM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"
+                name="startOB"> PM</br></br>
+            Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
+            <button class="mdc-button mdc-button--raised" style="margin: auto; width: 50%;" type="submit" name="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+</body>
+
 </html>
 <?php
 if(isset($_POST['submit'])){
