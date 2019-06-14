@@ -14,19 +14,19 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -49,14 +49,12 @@
 
             /* Add the blur effect */
             filter: blur(8px);
-            -webkit-filter: blur(8px);
+            -webkit-filter: blur(3px);
 
             /* Full height */
             height: 100%;
-    </head>
-    <a href="/admin/">Admin</a>
-    
-</html>
+
+
 
             /* Center and scale the image nicely */
             background-position: center;
@@ -72,8 +70,10 @@
             /* Black w/opacity/see-through */
             font-family: 'Roboto', sans-serif;
             color: white;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: normal;
             border: 3px solid #f1f1f1;
+            border-radius: 10px;
             position: absolute;
             top: 30%;
             left: 50%;
@@ -91,13 +91,15 @@
             /* Black w/opacity/see-through */
             font-family: 'Roboto', sans-serif;
             color: white;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: normal;
             border: 3px solid #f1f1f1;
+            border-radius: 10px;
             position: absolute;
             top: 80%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2;
+            z-index: 0;
             width: 80%;
             padding: 1%;
             text-align: center;
@@ -125,6 +127,8 @@
             padding: 7px 7px;
             text-decoration: none;
             text-shadow: 0px 1px 0px #2f6627;
+            position: absolute;
+            z-index: 1;
         }
 
         .myButton:hover {
@@ -139,8 +143,8 @@
         }
 
         .myButton:active {
-            position: relative;
-            top: 1px;
+            position: absolute;
+            z-index: 1;
         }
 
     </style>
