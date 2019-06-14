@@ -63,24 +63,32 @@
 
         .mdc-card {
             margin: 2%;
-            padding: 2%
-            display: flex;
-  align-items: center;
-  justify-content: center }
+            padding: 2% display: flex;
+            align-items: center;
+            justify-content: center
+        }
         }
 
         .mdc-button__label {
             font-family: "Roboto", "sarif";
         }
+
         @media (max-width: 490px) {
-    .mdc-card {
-        top: 50%; /* IMPORTANT */
-        left: 50%; /* IMPORTANT */
-        width: 100%;
-        margin-left: -1px; /* HALF OF THE WIDTH */
-        margin-right: 100%;
-    }
-}
+            .mdc-card {
+                top: 50%;
+                /* IMPORTANT */
+                left: 50%;
+                /* IMPORTANT */
+                width: 100%;
+                margin-left: -1px;
+                /* HALF OF THE WIDTH */
+                margin-right: 100%;
+            }
+
+            .bg-image {
+                background-image: url("/img/background-mobile.png");
+            }
+        }
     </style>
 
 </head>
