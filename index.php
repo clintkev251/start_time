@@ -7,9 +7,7 @@
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script>
-        import {
-            MDCRipple
-        } from '@material/ripple';
+        import {MDCRipple} from '@material/ripple';
 
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
@@ -102,7 +100,7 @@
             <?php echo($tomorrow);?>
         </h2>
         <?php if ($lines[1] != "\n"): ?>
-        <h3 style="text-align:center">Prime:
+        <h3 style="text-align:center">Prime/Unload:
             <?php echo($lines[1]);?>AM</h3>
         <?php endif ?>
         <h3 style="text-align:center">Start:
