@@ -7,7 +7,9 @@
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script>
-        import {MDCRipple} from '@material/ripple';
+        import {
+            MDCRipple
+        } from '@material/ripple';
 
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
@@ -43,7 +45,8 @@
     <style>
         h2,
         h3 {
-            font-family: "Roboto", "serif"
+            font-family: "Roboto", "serif";
+            text-align: "Center";
         }
 
         a {
@@ -96,32 +99,32 @@
 <body>
 
     <div class="mdc-card">
-        <h2 style="text-align:center;">Preload start time for
+        <h2>Preload start time for
             <?php echo($tomorrow);?>
         </h2>
         <?php if ($lines[1] != "\n"): ?>
-        <h3 style="text-align:center">Prime/Unload:
+        <h3>Prime/Unload:
             <?php echo($lines[1]);?>AM</h3>
         <?php endif ?>
-        <h3 style="text-align:center">Start:
+        <h3>Start:
             <?php echo($lines[2]);?> AM</h3>
-        <h3 style="text-align:center">
+        <h3>
             <?php echo($lines[3]);?>
         </h3>
     </div>
     <div class="mdc-card">
-        <h2 style="text-align:center;">Outbound start time for <?php echo($linesOB[0]);?></h2>
+        <h2>Outbound start time for <?php echo($linesOB[0]);?></h2>
         <?php if($linesOB[1] != "\n"): ?>
-        <h3 style="text-align:center">Prime: <?php echo($linesOB[1]);?>PM</h3>
+        <h3>Prime: <?php echo($linesOB[1]);?>PM</h3>
         <?php endif ?>
         <?php if($linesOB[2] != "\n"): ?>
-        <h3 style="text-align:center">Vanlines: <?php echo($linesOB[2]);?>PM</h3>
+        <h3>Vanlines: <?php echo($linesOB[2]);?>PM</h3>
         <?php endif ?>
         <?php if($linesOB[3] != "\n"): ?>
-        <h3 style="text-align:center">Smalls: <?php echo($linesOB[3]);?>PM</h3>
+        <h3>Smalls: <?php echo($linesOB[3]);?>PM</h3>
         <?php endif ?>
-        <h3 style="text-align:center">Start: <?php echo($linesOB[4]);?> PM</h3>
-        <h3 style="text-align:center"><?php echo($linesOB[5]);?>
+        <h3>Start: <?php echo($linesOB[4]);?> PM</h3>
+        <h3><?php echo($linesOB[5]);?>
     </div>
 </body>
 

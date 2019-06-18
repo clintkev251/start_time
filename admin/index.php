@@ -91,7 +91,7 @@
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"
                 name="startOB"> PM</br></br>
             Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
-            <button class="mdc-button mdc-button--raised" style="margin: auto; width: 50%;" type="submit" name="submit" value="Submit">Submit</button>
+            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit" value="Submit">Submit</button>
         </form>
     </div>
 </body>
