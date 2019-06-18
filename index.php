@@ -85,11 +85,6 @@
                 /* HALF OF THE WIDTH */
                 margin-right: 100%;
             }
-
-            .bg-image {
-                background-image: url("/img/background-mobile.png");
-            }
-
         }
     </style>
 
