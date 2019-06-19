@@ -46,7 +46,7 @@
         h2,
         h3 {
             font-family: "Roboto", "serif";
-            text-align: "Center";
+            text-align: Center;
         }
 
         a {
