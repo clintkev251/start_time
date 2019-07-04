@@ -13,6 +13,12 @@
 
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="/cal/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="/cal/js/datepicker.min.js"></script>
+
+    <!-- Include English language -->
+    <script src="/cal/js/i18n/datepicker.en.js"></script>
     <title>Start Time Administration</title>
     <?php
         $file = fopen("start.txt", "r");
@@ -28,6 +34,7 @@
             margin: 0;
             font-family: "Roboto", "serif";
         }
+
         h2,
         h3 {
             font-family: "Roboto", "serif"
@@ -37,11 +44,13 @@
             text-decoration: none;
             color: inherit;
         }
+
         body {
             background-image: url("/admin/6UaXRIr.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
         * {
             box-sizing: border-box;
         }
@@ -53,6 +62,7 @@
             -webkit-filter: blur(3px);
             background-attachment: fixed
         }
+
         .mdc-card {
             margin: 2%;
             padding: 1%;
@@ -74,14 +84,14 @@
         <h2>Edit the following fields below:</h2>
         <form method="post" action="index.php" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
-            Date: <input type="text" value="<?php echo($lines[0]);?>" name="date"></br></br>
+            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($lines[0]);?>" name="date" readonly></br></br>
             Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="prime">
             AM</br></br>
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="start">
             AM</br></br>
             Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
-            Date: <input type="text" value="<?php echo($linesOB[0]);?>" name="dateOB"></br></br>
+            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
             Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"
                 name="primeOB"> PM</br></br>
             Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"
@@ -91,7 +101,8 @@
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"
                 name="startOB"> PM</br></br>
             Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
-            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit" value="Submit">Submit</button>
+            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
+                value="Submit">Submit</button>
         </form>
     </div>
 </body>
