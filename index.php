@@ -13,6 +13,7 @@
 
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
+    <meta name="theme-color" content="#0a00b6">
     <title>Start Time</title>
     <!-- TODO: Selectable day?? -->
     <?php ; 

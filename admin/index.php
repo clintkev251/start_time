@@ -16,6 +16,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href="/cal/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="/cal/js/datepicker.min.js"></script>
+    <meta name="theme-color" content="#0a00b6">
 
     <!-- Include English language -->
     <script src="/cal/js/i18n/datepicker.en.js"></script>
