@@ -14,7 +14,7 @@
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
     <meta name="theme-color" content="#0a00b6">
-    <title>Start Time</title>
+    <title>CADI Start</title>
     <!-- TODO: Selectable day?? -->
     <?php ; 
         $myFile = "admin/start.txt";
@@ -56,7 +56,7 @@
         }
 
         body {
-            background-image: url("/img/background.png");
+            background-image: url("/img/background_opt.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -100,7 +100,7 @@
             <?php echo($tomorrow);?>
         </h2>
         <?php if ($lines[1] != "\n"): ?>
-        <h3>Prime/Unload:
+        <h3>Prime:
             <?php echo($lines[1]);?>AM</h3>
         <?php endif ?>
         <h3>Start:
@@ -116,16 +116,10 @@
         <?php if($linesOB[1] != "\n"): ?>
         <h3>Prime: <?php echo($linesOB[1]);?>PM</h3>
         <?php endif ?>
-        <?php if($linesOB[2] != "\n"): ?>
-        <h3>Vanlines: <?php echo($linesOB[2]);?>PM</h3>
-        <?php endif ?>
-        <?php if($linesOB[3] != "\n"): ?>
-        <h3>Smalls: <?php echo($linesOB[3]);?>PM</h3>
-        <?php endif ?>
-        <h3>Start: <?php echo($linesOB[4]);?> PM</h3>
-        <?php if($linesOB[5] !="\n"): ?>
+        <h3>Start: <?php echo($linesOB[2]);?> PM</h3>
+        <?php if($linesOB[2] !="\n"): ?>
         <h3>
-        <?php echo($linesOB[5]);?>
+        <?php echo($linesOB[3]);?>
         </h3>
         <?php endif ?>
     </div>

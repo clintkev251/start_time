@@ -95,13 +95,9 @@
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
             Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"
                 name="primeOB"> PM</br></br>
-            Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"
-                name="vanlineOB"> PM</br></br>
-            Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"
-                name="smallsOB"> PM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"
                 name="startOB"> PM</br></br>
-            Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
+            Notes: <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
             <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
                 value="Submit">Submit</button>
         </form>
@@ -127,10 +123,8 @@ if(isset($_POST['submit'])){
     $myfile = fopen("startOB.txt", "w");
     $to_write[0] = $_POST['dateOB'];
     $to_write[1] = $_POST['primeOB'];
-    $to_write[2] = $_POST['vanlineOB'];
-    $to_write[3] = $_POST['smallsOB'];
-    $to_write[4] = $_POST['startOB'];
-    $to_write[5] = $_POST['notesOB'];
+    $to_write[2] = $_POST['startOB'];
+    $to_write[3] = $_POST['notesOB'];
     $i = 0;
     while($i < count($to_write)){
         fwrite($myfile, $to_write[$i]);
