@@ -59,6 +59,7 @@
             background-image: url("/img/background.png");
             background-repeat: no-repeat;
             background-attachment: fixed;
+            background-size: cover;
         }
 
         .mdc-card {
@@ -104,9 +105,11 @@
         <?php endif ?>
         <h3>Start:
             <?php echo($lines[2]);?> AM</h3>
+        <?php if($lines[3] != "\n"): ?>
         <h3>
-            <?php echo($lines[3]);?>
+            <?php echo($lines[3]); ?>
         </h3>
+        <?php endif ?>
     </div>
     <div class="mdc-card">
         <h2>Outbound start time for <?php echo($linesOB[0]);?></h2>
@@ -120,7 +123,11 @@
         <h3>Smalls: <?php echo($linesOB[3]);?>PM</h3>
         <?php endif ?>
         <h3>Start: <?php echo($linesOB[4]);?> PM</h3>
-        <h3><?php echo($linesOB[5]);?>
+        <?php if($linesOB[5] !="\n"): ?>
+        <h3>
+        <?php echo($linesOB[5]);?>
+        </h3>
+        <?php endif ?>
     </div>
 </body>
 
