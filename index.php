@@ -86,6 +86,10 @@
                 margin-left: -1px;
                 /* HALF OF THE WIDTH */
                 margin-right: 100%;
+                
+            }
+            body {
+                background-size: auto;
             }
         }
     </style>
