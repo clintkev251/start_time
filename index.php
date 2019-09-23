@@ -15,7 +15,6 @@
     </script>
     <meta name="theme-color" content="#0a00b6">
     <title>Start Time</title>
-    <!-- TODO: Selectable day?? -->
     <?php ; 
         $myFile = "admin/start.txt";
         $startOB = "admin/startOB.txt";
@@ -79,12 +78,9 @@
         @media (max-width: 490px) {
             .mdc-card {
                 top: 50%;
-                /* IMPORTANT */
                 left: 50%;
-                /* IMPORTANT */
                 width: 100%;
                 margin-left: -1px;
-                /* HALF OF THE WIDTH */
                 margin-right: 100%;
                 
             }
