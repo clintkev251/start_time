@@ -100,14 +100,18 @@
             <?php echo($tomorrow);?>
         </h2>
         <?php if ($lines[1] != "\n"): ?>
-        <h3>Prime/Unload:
+        <h3>Unload:
             <?php echo($lines[1]);?>AM</h3>
         <?php endif ?>
+        <?php if ($lines[2] != "\n"): ?>
+        <h3>Prime:
+            <?php echo($lines[2]);?>AM</h3>
+        <?php endif ?>
         <h3>Start:
-            <?php echo($lines[2]);?> AM</h3>
-        <?php if($lines[3] != "\n"): ?>
+            <?php echo($lines[3]);?> AM</h3>
+        <?php if($lines[4] != "\n"): ?>
         <h3>
-            <?php echo($lines[3]); ?>
+            <?php echo($lines[4]); ?>
         </h3>
         <?php endif ?>
     </div>

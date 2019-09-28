@@ -83,25 +83,21 @@
 <body>
     <div class="mdc-card">
         <h2>Edit the following fields below:</h2>
+        <h4>(Fields in <i>italics</i> are optional)</h4>
         <form method="post" action="index.php" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($lines[0]);?>" name="date" readonly></br></br>
-            Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="prime">
-            AM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="start">
-            AM</br></br>
-            Notes: <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
+            <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="unload">AM</br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="prime">AM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[3]);?>" name="start">AM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($lines[4]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
-            Prime: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"
-                name="primeOB"> PM</br></br>
-            Vanline: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"
-                name="vanlineOB"> PM</br></br>
-            Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"
-                name="smallsOB"> PM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"
-                name="startOB"> PM</br></br>
-            Notes: <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"name="primeOB"> PM</br></br>
+            <i>Vanline:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"name="vanlineOB"> PM</br></br>
+            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[3]);?>"name="smallsOB"> PM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[4]);?>"name="startOB"> PM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($linesOB[5]);?>" name="notesOB"></br></br>
             <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
                 value="Submit">Submit</button>
         </form>
@@ -114,9 +110,10 @@ if(isset($_POST['submit'])){
     echo "<meta http-equiv='refresh' content='0'>";
     $myfile = fopen("start.txt", "w");
     $to_write[0] = $_POST['date'];
-    $to_write[1] = $_POST['prime'];
-    $to_write[2] = $_POST['start'];
-    $to_write[3] = $_POST['notes'];
+    $to_write[1] = $_POST['unload'];
+    $to_write[2] = $_POST['prime'];
+    $to_write[3] = $_POST['start'];
+    $to_write[4] = $_POST['notes'];
     $i = 0;
     while($i < count($to_write)){
         fwrite($myfile, $to_write[$i]);
