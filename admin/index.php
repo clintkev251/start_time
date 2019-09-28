@@ -87,9 +87,9 @@
         <form method="post" action="index.php" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($lines[0]);?>" name="date" readonly></br></br>
-            <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="unload">AM</br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="prime">AM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[3]);?>" name="start">AM</br></br>
+            <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="unload"> AM</br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="prime"> AM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[3]);?>" name="start"> AM</br></br>
             <i>Notes:</i> <input type="text" value="<?php echo($lines[4]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
