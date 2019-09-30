@@ -15,10 +15,9 @@
     </script>
     <meta name="theme-color" content="#0a00b6">
     <title>CADI Start</title>
-    <!-- TODO: Selectable day?? -->
     <?php ; 
-        $myFile = "admin/start.txt";
-        $startOB = "admin/startOB.txt";
+        $myFile = "admin/start.csv";
+        $startOB = "admin/startOB.csv";
         $lines = file($myFile);
         $linesOB = file($startOB);
         $tomorrow = $lines[0];
