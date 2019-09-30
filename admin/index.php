@@ -22,10 +22,10 @@
     <script src="/cal/js/i18n/datepicker.en.js"></script>
     <title>Start Time Administration</title>
     <?php
-        $file = fopen("start.txt", "r");
-        $lines = file("start.txt");
-        $fileOB = fopen("startOB.txt", "r");
-        $linesOB = file("startOB.txt");
+        $file = fopen("start.csv", "r");
+        $lines = file("start.csv");
+        $fileOB = fopen("startOB.csv", "r");
+        $linesOB = file("startOB.csv");
         ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -108,7 +108,7 @@
 <?php
 if(isset($_POST['submit'])){
     echo "<meta http-equiv='refresh' content='0'>";
-    $myfile = fopen("start.txt", "w");
+    $myfile = fopen("start.csv", "w");
     $to_write[0] = $_POST['date'];
     $to_write[1] = $_POST['unload'];
     $to_write[2] = $_POST['prime'];
@@ -121,7 +121,7 @@ if(isset($_POST['submit'])){
         $i++;
     }
     fclose($myfile);
-    $myfile = fopen("startOB.txt", "w");
+    $myfile = fopen("startOB.csv", "w");
     $to_write[0] = $_POST['dateOB'];
     $to_write[1] = $_POST['primeOB'];
     $to_write[2] = $_POST['vanlineOB'];
