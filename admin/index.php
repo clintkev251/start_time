@@ -55,7 +55,7 @@
         * {
             box-sizing: border-box;
         }
-
+        
         .bg-image {
             /* The image used */
             background-image: url("6UaXRIr.jpg");
@@ -75,6 +75,9 @@
 
         .mdc-button__label {
             font-family: "Roboto", "sarif";
+        }
+        ::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
