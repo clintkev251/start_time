@@ -55,7 +55,7 @@
         * {
             box-sizing: border-box;
         }
-
+        
         .bg-image {
             /* The image used */
             background-image: url("6UaXRIr.jpg");
@@ -76,6 +76,9 @@
         .mdc-button__label {
             font-family: "Roboto", "sarif";
         }
+        ::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 </head>
 <a href="/" class="mdc-button mdc-button--raised" style="margin: 0.5%;">Home</a>
@@ -90,7 +93,8 @@
             <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="unload"> AM</br></br>
             <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="prime"> AM</br></br>
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[3]);?>" name="start"> AM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($lines[4]);?>" name="notes"></br></br>
+            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[4]);?>" name="smalls"> AM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($lines[5]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
             <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"name="primeOB"> PM</br></br>
@@ -113,7 +117,8 @@ if(isset($_POST['submit'])){
     $to_write[1] = $_POST['unload'];
     $to_write[2] = $_POST['prime'];
     $to_write[3] = $_POST['start'];
-    $to_write[4] = $_POST['notes'];
+    $to_write[4] = $_POST['smalls'];
+    $to_write[5] = $_POST['notes'];
     $i = 0;
     while($i < count($to_write)){
         fwrite($myfile, $to_write[$i]);

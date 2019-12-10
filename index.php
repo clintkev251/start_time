@@ -107,11 +107,15 @@
         <h3>Prime:
             <?php echo($lines[2]);?> AM</h3>
         <?php endif ?>
+        <?php if ($lines[4] != "\n"): ?>
+        <h3>Smalls:
+            <?php echo($lines[4]);?> AM</h3>
+        <?php endif ?>
         <h3>Start:
             <?php echo($lines[3]);?> AM</h3>
-        <?php if($lines[4] != "\n"): ?>
+        <?php if($lines[5] != "\n"): ?>
         <h3>
-            <?php echo($lines[4]); ?>
+            <?php echo($lines[5]); ?>
         </h3>
         <?php endif ?>
     </div>
