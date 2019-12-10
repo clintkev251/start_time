@@ -90,7 +90,7 @@
             <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="unload"> AM</br></br>
             <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="prime"> AM</br></br>
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[3]);?>" name="start"> AM</br></br>
-            Smalls: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[4]);?>" name="smalls"> AM</br></br>
+            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[4]);?>" name="smalls"> AM</br></br>
             <i>Notes:</i> <input type="text" value="<?php echo($lines[5]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
