@@ -56,10 +56,11 @@
         }
 
         body {
-            background-image: url("/img/background.png");
+            background-image: url("/img/background.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            
         }
 
         .mdc-card {
