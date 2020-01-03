@@ -14,13 +14,14 @@
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
     <meta name="theme-color" content="#0a00b6">
-    <title>Start Time</title>
+    <title>SB Start</title>
     <?php ; 
         $myFile = "admin/start.csv";
         $startOB = "admin/startOB.csv";
+        $startOTP = "admin/startOTP.csv";
         $lines = file($myFile);
         $linesOB = file($startOB);
-        $tomorrow = $lines[0];
+        $linesOTP = file($startOTP);
         ?>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -96,44 +97,42 @@
 <body>
 
     <div class="mdc-card">
-        <h2>Preload start time for
-            <?php echo($tomorrow);?>
+        <h2>Preload for
+            <?php echo($lines[0]);?>
         </h2>
         <?php if ($lines[1] != "\n"): ?>
-        <h3>Unload:
+        <h3>Prime:
             <?php echo($lines[1]);?> AM</h3>
         <?php endif ?>
-        <?php if ($lines[2] != "\n"): ?>
-        <h3>Prime:
-            <?php echo($lines[2]);?> AM</h3>
-        <?php endif ?>
-        <?php if ($lines[4] != "\n"): ?>
-        <h3>Smalls:
-            <?php echo($lines[4]);?> AM</h3>
-        <?php endif ?>
         <h3>Start:
-            <?php echo($lines[3]);?> AM</h3>
-        <?php if($lines[5] != "\n"): ?>
+            <?php echo($lines[2]);?> AM</h3>
+        <?php if($lines[3] != "\n"): ?>
         <h3>
-            <?php echo($lines[5]); ?>
+            <?php echo($lines[3]); ?>
         </h3>
         <?php endif ?>
     </div>
     <div class="mdc-card">
-        <h2>Outbound start time for <?php echo($linesOB[0]);?></h2>
+        <h2>Outbound for <?php echo($linesOB[0]);?></h2>
         <?php if($linesOB[1] != "\n"): ?>
         <h3>Prime: <?php echo($linesOB[1]);?>PM</h3>
         <?php endif ?>
-        <?php if($linesOB[2] != "\n"): ?>
-        <h3>Vanlines: <?php echo($linesOB[2]);?>PM</h3>
-        <?php endif ?>
-        <?php if($linesOB[3] != "\n"): ?>
-        <h3>Smalls: <?php echo($linesOB[3]);?>PM</h3>
-        <?php endif ?>
-        <h3>Start: <?php echo($linesOB[4]);?> PM</h3>
-        <?php if($linesOB[5] !="\n"): ?>
+        <h3>Start: <?php echo($linesOB[2]);?> PM</h3>
+        <?php if($linesOB[3] !="\n"): ?>
         <h3>
-        <?php echo($linesOB[5]);?>
+        <?php echo($linesOB[3]);?>
+        </h3>
+        <?php endif ?>
+    </div>
+    <div class="mdc-card">
+        <h2>OTP for <?php echo($linesOTP[0]);?></h2>
+        <?php if($linesOB[1] != "\n"): ?>
+        <h3>Prime: <?php echo($linesOTP[1]);?>PM</h3>
+        <?php endif ?>
+        <h3>Start: <?php echo($linesOTP[2]);?> PM</h3>
+        <?php if($linesOTP[3] !="\n"): ?>
+        <h3>
+        <?php echo($linesOTP[3]);?>
         </h3>
         <?php endif ?>
     </div>
