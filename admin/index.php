@@ -10,7 +10,6 @@
         import {
             MDCRipple
         } from '@material/ripple';
-
         const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -49,7 +48,7 @@
         }
 
         body {
-            background-image: url("/admin/6UaXRIr.jpg");
+            background-image: url("/img/background.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
