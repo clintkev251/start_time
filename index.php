@@ -128,12 +128,12 @@
     <div class="mdc-card">
         <h2>OTP for <?php echo($linesOTP[0]);?></h2>
         <?php if($linesOB[1] != "\n"): ?>
-        <h3>Prime: <?php echo($linesOTP[1]);?>PM</h3>
+        <h3>Prime: <?php echo($linesOTP[1]); echo($linesOTP[2]);?></h3>
         <?php endif ?>
-        <h3>Start: <?php echo($linesOTP[2]);?> PM</h3>
-        <?php if($linesOTP[3] !="\n"): ?>
+        <h3>Start: <?php echo($linesOTP[3]); echo($linesOTP[4]);?></h3>
+        <?php if($linesOTP[5] !="\n"): ?>
         <h3>
-        <?php echo($linesOTP[3]);?>
+        <?php echo($linesOTP[5]);?>
         </h3>
         <?php endif ?>
     </div>

@@ -101,9 +101,9 @@
             <i>Notes:</i> <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
             <h3>OTP:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOTP[0]);?>" name="dateOTP"readonly></br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[1]);?>"name="primeOTP"> PM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[2]);?>"name="startOTP"> PM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($linesOTP[3]);?>" name="notesOTP"></br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[1]);?>"name="primeOTP"> <select name="primeAM"><option <?php if ($linesOTP[2] == "AM\n"): echo('selected'); endif ?> value="AM">AM</option><option <?php if ($linesOTP[2] == "PM\n"): echo('selected'); endif ?> value="PM">PM</option></select></br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[3]);?>"name="startOTP"> <select name="startAM"><option <?php if ($linesOTP[4] == "AM\n"): echo('selected'); endif ?> value="AM">AM</option><option <?php if ($linesOTP[4] == "PM\n"): echo('selected'); endif ?> value="PM">PM</option></select></br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($linesOTP[5]);?>" name="notesOTP"></br></br>
             <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
                 value="Submit">Submit</button>
         </form>
@@ -141,8 +141,10 @@ if(isset($_POST['submit'])){
     $myfile = fopen("startOTP.csv", "w");
     $to_write[0] = $_POST['dateOTP'];
     $to_write[1] = $_POST['primeOTP'];
-    $to_write[2] = $_POST['startOTP'];
-    $to_write[3] = $_POST['notesOTP'];
+    $to_write[2] = $_POST['primeAM'];
+    $to_write[3] = $_POST['startOTP'];
+    $to_write[4] = $_POST['startAM'];
+    $to_write[5] = $_POST['notesOTP'];
     $i = 0;
     while($i < count($to_write)){
         fwrite($myfile, $to_write[$i]);
