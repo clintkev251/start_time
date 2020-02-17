@@ -1,0 +1,45 @@
+body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: "Roboto", "serif";
+        }
+
+        h2,
+        h3 {
+            font-family: "Roboto", "serif"
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            background-image: url("/img/background.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .mdc-card {
+            margin: 2%;
+            padding: 1%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .mdc-button__label {
+            font-family: "Roboto", "sarif";
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .mdc-button {
+            margin: 0.5%;
+        }
