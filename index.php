@@ -1,139 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+<?php
+require_once "config.php";
+// Get existing data from database - Preload
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'preload'");
+$preloadTimes = mysqli_fetch_assoc($sql);
+
+// Outbound
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'outbound'");
+$outboundTimes = mysqli_fetch_assoc($sql);
+
+// OTP
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'otp'");
+$otpTimes = mysqli_fetch_assoc($sql);
+?>
 
 <head>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script>
-        import {
-            MDCRipple
-        } from '@material/ripple';
-
-        const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
-    </script>
     <meta name="theme-color" content="#0a00b6">
     <title>SB Start</title>
-    <?php ; 
-        $myFile = "admin/start.csv";
-        $startOB = "admin/startOB.csv";
-        $startOTP = "admin/startOTP.csv";
-        $lines = file($myFile);
-        $linesOB = file($startOB);
-        $linesOTP = file($startOTP);
-        ?>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <style>
-        h2,
-        h3 {
-            font-family: "Roboto", "serif";
-            text-align: Center;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        body {
-            background-image: url("/img/background.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            
-        }
-
-        .mdc-card {
-            margin: 2%;
-            padding: 1%;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-        }
-
-        .mdc-button__label {
-            font-family: "Roboto", "sarif";
-        }
-
-
-        @media (max-width: 490px) {
-            .mdc-card {
-                top: 50%;
-                left: 50%;
-                width: 100%;
-                margin-left: -1px;
-                margin-right: 100%;
-                
-            }
-            body {
-                background-size: auto;
-            }
-        }
-    </style>
-
 </head>
-<a class="mdc-button mdc-button--raised" href="/admin/">Admin</a>
+<a class="mdc-button mdc-button--raised" href="admin.php">Admin</a>
 
 <body>
 
     <div class="mdc-card">
         <h2>Preload for
-            <?php echo($lines[0]);?>
+            <?php echo($preloadTimes["date"]);?>
         </h2>
-        <?php if ($lines[1] != "\n"): ?>
+        <?php if ($preloadTimes["prime"] != ""): ?>
         <h3>Prime:
-            <?php echo($lines[1]);?> AM</h3>
+            <?php echo($preloadTimes["prime"]);?></h3>
         <?php endif ?>
         <h3>Start:
-            <?php echo($lines[2]);?> AM</h3>
-        <?php if($lines[3] != "\n"): ?>
+            <?php echo($preloadTimes["start"]);?></h3>
+        <?php if($preloadTimes["notes"] != ""): ?>
         <h3>
-            <?php echo($lines[3]); ?>
+            <?php echo($preloadTimes["notes"]); ?>
         </h3>
         <?php endif ?>
     </div>
     <div class="mdc-card">
-        <h2>Outbound for <?php echo($linesOB[0]);?></h2>
-        <?php if($linesOB[1] != "\n"): ?>
-        <h3>Prime: <?php echo($linesOB[1]);?>PM</h3>
+        <h2>Outbound for <?php echo($outboundTimes["date"]);?></h2>
+        <?php if($outboundTimes["prime"] != ""): ?>
+        <h3>Prime: <?php echo($outboundTimes["prime"]);?></h3>
         <?php endif ?>
-        <h3>Start: <?php echo($linesOB[2]);?> PM</h3>
-        <?php if($linesOB[3] !="\n"): ?>
+        <h3>Start: <?php echo($outboundTimes["start"]);?></h3>
+        <?php if($outboundTimes["notes"] !=""): ?>
         <h3>
-        <?php echo($linesOB[3]);?>
+        <?php echo($outboundTimes["notes"]);?>
         </h3>
         <?php endif ?>
     </div>
     <div class="mdc-card">
-        <h2>OTP for <?php echo($linesOTP[0]);?></h2>
-        <?php if($linesOB[1] != "\n"): ?>
-        <h3>Prime: <?php echo($linesOTP[1]); echo($linesOTP[2]);?></h3>
+        <h2>OTP for <?php echo($otpTimes["date"]);?></h2>
+        <?php if($otpTimes["prime"] != ""): ?>
+        <h3>Prime: <?php echo($otpTimes["prime"]); ?></h3>
         <?php endif ?>
-        <h3>Start: <?php echo($linesOTP[3]); echo($linesOTP[4]);?></h3>
-        <?php if($linesOTP[5] !="\n"): ?>
+        <h3>Start: <?php echo($otpTimes["start"]); ?></h3>
+        <?php if($otpTimes["notes"] !=""): ?>
         <h3>
-        <?php echo($linesOTP[5]);?>
+        <?php echo($otpTimes["notes"]); ?>
         </h3>
         <?php endif ?>
     </div>

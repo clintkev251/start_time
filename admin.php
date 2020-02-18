@@ -1,18 +1,85 @@
+<?php
+
+// Initialize the session
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+require_once "config.php";
+// Get existing data from database - Preload
+$sql = mysqli_query($link, "SELECT start,prime,date,unload,smalls,notes FROM times WHERE sort = 'preload'");
+$preloadTimes = mysqli_fetch_assoc($sql);
+$updatedBy = $_SESSION["username"];
+// Outbound
+$sql = mysqli_query($link, "SELECT start,prime,date,vanlines,smalls,notes FROM times WHERE sort = 'outbound'");
+$outboundTimes = mysqli_fetch_assoc($sql);
+// OTP
+$sql = mysqli_query($link, "SELECT start,prime,date,vanlines,smalls,notes FROM times WHERE sort = 'otp'");
+$otpTimes = mysqli_fetch_assoc($sql);
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    // Set varibles for times
+        $updatedBy = $_SESSION["username"];
+    // Preload
+        $preload = "preload";
+        $preStart = trim($_POST["start"]);
+        $prePrime = trim($_POST["prime"]);
+        $preDate = trim($_POST["date"]);
+        $preNotes = trim($_POST["notes"]);
+    // Outbound
+        $outbound = "outbound";
+        $obStart = trim($_POST["startOB"]);
+        $obPrime = trim($_POST["primeOB"]);
+        $obDate = trim($_POST["dateOB"]);
+        $obNotes = trim($_POST["notesOB"]);
+    // OTP
+        $otp = "otp";
+        $otpStart = trim($_POST["startOTP"]);
+        $otpPrime = trim($_POST["primeOTP"]);
+        $otpDate = trim($_POST["dateOTP"]);
+        $otpNotes = trim($_POST["notesOTP"]);
+        
+    // Prepare a sql statement for Preload
+        $sql = "UPDATE times SET start = ?, date = ?, prime = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "ssssss", $preStart, $preDate, $prePrime, $preNotes, $updatedBy, $preload );
+            mysqli_stmt_execute($stmt);
+        }
+        
+    // Prepare a sql statement for outbound
+        $sql = "UPDATE times SET start = ?, date = ?, prime = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+            if($stmt = mysqli_prepare($link, $sql)){
+                mysqli_stmt_bind_param($stmt, "ssssss", $obStart, $obDate, $obPrime, $obNotes, $updatedBy, $outbound );
+                mysqli_stmt_execute($stmt);
+            }
+            mysqli_stmt_close($stmt);
+            
+    // Prepare a sql statement for OTP
+        $sql = "UPDATE times SET start = ?, date = ?, prime = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+            if($stmt = mysqli_prepare($link, $sql)){
+                mysqli_stmt_bind_param($stmt, "ssssss", $otpStart, $otpDate, $otpPrime, $otpNotes, $updatedBy, $otp );
+                mysqli_stmt_execute($stmt);
+            }
+            mysqli_stmt_close($stmt);
+        }
+        
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script>
-        import {
-            MDCRipple
-        } from '@material/ripple';
-        const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
-    </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href="/cal/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="/cal/js/datepicker.min.js"></script>
     <meta name="theme-color" content="#0a00b6">
@@ -20,69 +87,11 @@
     <!-- Include English language -->
     <script src="/cal/js/i18n/datepicker.en.js"></script>
     <title>Start Time Administration</title>
-    <?php
-        $file = fopen("start.csv", "r");
-        $lines = file("start.csv");
-        $fileOB = fopen("startOB.csv", "r");
-        $linesOB = file("startOB.csv");
-        $fileOTP = fopen("startOTP.csv", "r");
-        $linesOTP = file("startOTP.csv");
-        ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            font-family: "Roboto", "serif";
-        }
-
-        h2,
-        h3 {
-            font-family: "Roboto", "serif"
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        body {
-            background-image: url("/img/background.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-        
-        .bg-image {
-            /* The image used */
-            /*TODO: Change to something SOBD related */background-image: url("6UaXRIr.jpg");
-            filter: blur(8px);
-            -webkit-filter: blur(3px);
-            background-attachment: fixed
-        }
-
-        .mdc-card {
-            margin: 2%;
-            padding: 1%;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-        }
-
-        .mdc-button__label {
-            font-family: "Roboto", "sarif";
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
 </head>
-<a href="/" class="mdc-button mdc-button--raised" style="margin: 0.5%;">Home</a>
+<a href="logout.php" class="mdc-button mdc-button--raised">Home</a>
+<a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
+<a href="reset-password.php" class="mdc-button mdc-button--raised">Change your password</a>
 
 <body>
     <div class="mdc-card">
@@ -90,67 +99,23 @@
         <h4>(Fields in <i>italics</i> are optional)</h4>
         <form method="post" action="index.php" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
-            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($lines[0]);?>" name="date" readonly></br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[1]);?>" name="prime"> AM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($lines[2]);?>" name="start"> AM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($lines[3]);?>" name="notes"></br></br>
+            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($preloadTimes["date"]);?>" name="date" readonly></br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["prime"]);?>" name="prime"> AM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["start"]);?>" name="start"> AM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($preloadTimes["notes"]);?>" name="notes"></br></br>
             <h3>Outbound:</h3>
-            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOB[0]);?>" name="dateOB"readonly></br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[1]);?>"name="primeOB"> PM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOB[2]);?>"name="startOB"> PM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($linesOB[3]);?>" name="notesOB"></br></br>
+            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($outboundTimes["date"]);?>" name="dateOB"readonly></br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["prime"]);?>"name="primeOB"> PM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["start"]);?>"name="startOB"> PM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($outboundTimes["notes"]);?>" name="notesOB"></br></br>
             <h3>OTP:</h3>
-            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($linesOTP[0]);?>" name="dateOTP"readonly></br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[1]);?>"name="primeOTP"> <select name="primeAM"><option <?php if ($linesOTP[2] == "AM\n"): echo('selected'); endif ?> value="AM">AM</option><option <?php if ($linesOTP[2] == "PM\n"): echo('selected'); endif ?> value="PM">PM</option></select></br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($linesOTP[3]);?>"name="startOTP"> <select name="startAM"><option <?php if ($linesOTP[4] == "AM\n"): echo('selected'); endif ?> value="AM">AM</option><option <?php if ($linesOTP[4] == "PM\n"): echo('selected'); endif ?> value="PM">PM</option></select></br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($linesOTP[5]);?>" name="notesOTP"></br></br>
-            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
-                value="Submit">Submit</button>
+            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($otpTimes["date"]);?>" name="dateOTP"readonly></br></br>
+            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($otpTimes["prime"]);?>"name="primeOB"> PM</br></br>
+            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($otpTimes["start"]);?>"name="startOB"> PM</br></br>
+            <i>Notes:</i> <input type="text" value="<?php echo($otpTimes["notes"]);?>" name="notesOB"></br></br>
+            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit" value="Submit">Submit</button>
         </form>
     </div>
 </body>
 
 </html>
-<?php
-if(isset($_POST['submit'])){
-    echo "<meta http-equiv='refresh' content='0'>";
-    $myfile = fopen("start.csv", "w");
-    $to_write[0] = $_POST['date'];
-    $to_write[1] = $_POST['prime'];
-    $to_write[2] = $_POST['start'];
-    $to_write[3] = $_POST['notes'];
-    $i = 0;
-    while($i < count($to_write)){
-        fwrite($myfile, $to_write[$i]);
-        fwrite($myfile, "\n");
-        $i++;
-    }
-    fclose($myfile);
-    $myfile = fopen("startOB.csv", "w");
-    $to_write[0] = $_POST['dateOB'];
-    $to_write[1] = $_POST['primeOB'];
-    $to_write[2] = $_POST['startOB'];
-    $to_write[3] = $_POST['notesOB'];
-    $i = 0;
-    while($i < count($to_write)){
-        fwrite($myfile, $to_write[$i]);
-        fwrite($myfile, "\n");
-        $i++;
-    }
-    fclose($myfile);
-    $myfile = fopen("startOTP.csv", "w");
-    $to_write[0] = $_POST['dateOTP'];
-    $to_write[1] = $_POST['primeOTP'];
-    $to_write[2] = $_POST['primeAM'];
-    $to_write[3] = $_POST['startOTP'];
-    $to_write[4] = $_POST['startAM'];
-    $to_write[5] = $_POST['notesOTP'];
-    $i = 0;
-    while($i < count($to_write)){
-        fwrite($myfile, $to_write[$i]);
-        fwrite($myfile, "\n");
-        $i++;
-    }
-    fclose($myfile);
-}
-?>
