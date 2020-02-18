@@ -18,11 +18,11 @@ $username_err = $password_err = $confirm_password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate registration code
-    if(trim($_POST["regCode"] != "ZGRDusrReg46546874sfd")){
-        $regCode_err = "Please enter a valid registration code.";
-    }
+    // if(trim($_POST["regCode"] != "ZGRDusrReg46546874sfd")){
+    //     $regCode_err = "Please enter a valid registration code.";
+    // }
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["username"])) || !is_numeric(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
@@ -132,14 +132,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($regCode_err)) ? 'has-error' : ''; ?>">
-                <label>Registration Code</label>
-                <input type="text" name="regCode" class="form-control" value="<?php echo $regCode; ?>"/>
-                <span class="help-block"><?php echo $regCode_err; ?></span>
-            </div>
+            <!--<div class="form-group <?php echo (!empty($regCode_err)) ? 'has-error' : ''; ?>">-->
+            <!--    <label>Registration Code</label>-->
+            <!--    <input type="text" name="regCode" class="form-control" value="<?php echo $regCode; ?>"/>-->
+            <!--    <span class="help-block"><?php echo $regCode_err; ?></span>-->
+            <!--</div>-->
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>FedEx ID</label>
-                <input type="number" name="username" class="form-control" value="<?php echo $username; ?>">
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
