@@ -40,21 +40,21 @@ $outboundTimes = mysqli_fetch_assoc($sql);
         <h2>Preload start time for
             <?php echo($preloadTimes["date"]);?>
         </h2>
-        <?php if ($preloadTimes["unload"] != "\n"): ?>
+        <?php if ($preloadTimes["unload"] != ""): ?>
         <h3>Unload:
             <?php echo($preloadTimes["unload"]);?> AM</h3>
         <?php endif ?>
-        <?php if ($preloadTimes["prime"] != "\n"): ?>
+        <?php if ($preloadTimes["prime"] != ""): ?>
         <h3>Prime:
             <?php echo($preloadTimes["prime"]);?> AM</h3>
         <?php endif ?>
-        <?php if ($preloadTimes["smalls"] != "\n"): ?>
+        <?php if ($preloadTimes["smalls"] != ""): ?>
         <h3>Smalls:
             <?php echo($preloadTimes["smalls"]);?> AM</h3>
         <?php endif ?>
         <h3>Start:
             <?php echo($preloadTimes["start"]);?> AM</h3>
-        <?php if($preloadTimes["notes"] != "\n"): ?>
+        <?php if($preloadTimes["notes"] != ""): ?>
         <h3>
             <?php echo($preloadTimes["notes"]); ?>
         </h3>
@@ -62,17 +62,17 @@ $outboundTimes = mysqli_fetch_assoc($sql);
     </div>
     <div class="mdc-card">
         <h2>Outbound start time for <?php echo($outboundTimes["date"]);?></h2>
-        <?php if($outboundTimes["prime"] != "\n"): ?>
+        <?php if($outboundTimes["prime"] != ""): ?>
         <h3>Prime: <?php echo($outboundTimes["prime"]);?> PM</h3>
         <?php endif ?>
-        <?php if($outboundTimes["vanlines"] != "\n"): ?>
+        <?php if($outboundTimes["vanlines"] != ""): ?>
         <h3>Vanlines: <?php echo($outboundTimes["vanlines"]);?> PM</h3>
         <?php endif ?>
-        <?php if($outboundTimes["smalls"] != "\n"): ?>
+        <?php if($outboundTimes["smalls"] != ""): ?>
         <h3>Smalls: <?php echo($outboundTimes["smalls"]);?> PM</h3>
         <?php endif ?>
         <h3>Start: <?php echo($outboundTimes["start"]);?> PM</h3>
-        <?php if($outboundTimes["notes"] !="\n"): ?>
+        <?php if($outboundTimes["notes"] !=""): ?>
         <h3>
         <?php echo($outboundTimes["notes"]);?>
         </h3>
