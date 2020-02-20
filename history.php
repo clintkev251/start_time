@@ -77,7 +77,7 @@ require_once "config.php";
         </thead>
         <tbody>
         <?php
-            $results = mysqli_query($link, "SELECT * FROM timesHistory ORDER BY updateID DESC LIMIT 10");
+            $results = mysqli_query($link, "SELECT * FROM timesHistory ORDER BY updateID DESC LIMIT 20");
             while($row = mysqli_fetch_assoc($results)) {
             ?>
                 <tr>
