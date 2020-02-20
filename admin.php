@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_execute($stmt);
             }
             mysqli_stmt_close($stmt);
+            echo "<meta http-equiv='refresh' content='0'>";
         }
         
 ?>
