@@ -49,8 +49,10 @@ require_once "config.php";
             }
             thead {
                 font-weight: bold;
+                color: white;
+                background-color: #50A;
             }
-            tr:hover {background-color: #f5f5f5;}
+            r:not(:first-child):hover {background-color: #f5f5f5;}
         </style>
     </head>
     
