@@ -91,6 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </style>
 </head>
 <a href="logout.php" class="mdc-button mdc-button--raised">Home</a>
+<a href="history.php" class="mdc-button mdc-button--raised">Submit History</a>
 <a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
 <a href="reset-password.php" class="mdc-button mdc-button--raised">Change your password</a>
 <body>
