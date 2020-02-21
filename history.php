@@ -37,7 +37,7 @@ require_once "config.php";
             table, th, td {
               border: 2px solid black;
               border-collapse: collapse;
-              padding: 10px;
+              padding: 5px;
             }
             table {
               width: 100%;
@@ -52,7 +52,6 @@ require_once "config.php";
                 color: white;
                 background-color: #50A;
             }
-            r:not(:first-child):hover {background-color: #f5f5f5;}
         </style>
     </head>
     
