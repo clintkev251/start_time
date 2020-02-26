@@ -29,7 +29,7 @@ $outboundTimes = mysqli_fetch_assoc($sql);
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#80F">
 </head>
 
 <a class="mdc-button mdc-button--raised" href="admin.php">Admin</a>

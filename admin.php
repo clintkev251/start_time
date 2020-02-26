@@ -11,7 +11,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
 require_once "config.php";
+
+$currentUser = $_SESSION["username"];
+$sql = "SELECT * FROM users WHERE username = ?";
+if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $currentUser);
+            mysqli_stmt_execute($stmt);
+            $result = $stmt->get_result();
+            $isAdmin = mysqli_fetch_assoc($result);
+        }
+
 // Get existing data from database - Preload
 $sql = mysqli_query($link, "SELECT start,prime,date,unload,smalls,notes FROM times WHERE sort = 'preload'");
 $preloadTimes = mysqli_fetch_assoc($sql);
@@ -92,8 +103,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <a href="logout.php" class="mdc-button mdc-button--raised">Home</a>
 <a href="history.php" class="mdc-button mdc-button--raised">Submit History</a>
-<a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
 <a href="reset-password.php" class="mdc-button mdc-button--raised">Change your password</a>
+<?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdc-button mdc-button--raised">User Management</a> <?php } ?>
 <body>
     <?php if($updatedBy == "fxguser"){ ?>
     <div class="alert">
