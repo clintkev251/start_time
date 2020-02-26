@@ -11,7 +11,6 @@ $preloadTimes = mysqli_fetch_assoc($sql);
 $sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'outbound'");
 $outboundTimes = mysqli_fetch_assoc($sql);
 ?>
-
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
@@ -35,7 +34,6 @@ $outboundTimes = mysqli_fetch_assoc($sql);
 <a class="mdc-button mdc-button--raised" href="admin.php">Admin</a>
 
 <body>
-
     <div class="mdc-card">
         <h2>Preload start time for
             <?php echo($preloadTimes["date"]);?>

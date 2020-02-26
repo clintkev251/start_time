@@ -34,44 +34,43 @@ $outboundTimes = mysqli_fetch_assoc($sql);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    // Set varibles for times
-        $updatedBy = $_SESSION["username"];
-    // Preload
-        $preload = "preload";
-        $preStart = trim($_POST["start"]);
-        $prePrime = trim($_POST["prime"]);
-        $preDate = trim($_POST["date"]);
-        $preUnload = trim($_POST["unload"]);
-        $preSmalls = trim($_POST["smalls"]);
-        $preNotes = trim($_POST["notes"]);
-    // Outbound
-        $outbound = "outbound";
-        $obStart = trim($_POST["startOB"]);
-        $obPrime = trim($_POST["primeOB"]);
-        $obDate = trim($_POST["dateOB"]);
-        $obVanline = trim($_POST["vanlineOB"]);
-        $obSmalls = trim($_POST["smallsOB"]);
-        $obNotes = trim($_POST["notesOB"]);
-    //Create hashes from new data to detect changes
-        
-    // Prepare a sql statement for Preload
-        $sql = "UPDATE times SET start = ?, date = ?, prime = ?, unload = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+// Set varibles for times
+    $updatedBy = $_SESSION["username"];
+// Preload
+    $preload = "preload";
+    $preStart = trim($_POST["start"]);
+    $prePrime = trim($_POST["prime"]);
+    $preDate = trim($_POST["date"]);
+    $preUnload = trim($_POST["unload"]);
+    $preSmalls = trim($_POST["smalls"]);
+    $preNotes = trim($_POST["notes"]);
+// Outbound
+    $outbound = "outbound";
+    $obStart = trim($_POST["startOB"]);
+    $obPrime = trim($_POST["primeOB"]);
+    $obDate = trim($_POST["dateOB"]);
+    $obVanline = trim($_POST["vanlineOB"]);
+    $obSmalls = trim($_POST["smallsOB"]);
+    $obNotes = trim($_POST["notesOB"]);
+//Create hashes from new data to detect changes
+    
+// Prepare a sql statement for Preload
+    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, unload = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+    if($stmt = mysqli_prepare($link, $sql)){
+        mysqli_stmt_bind_param($stmt, "ssssssss", $preStart, $preDate, $prePrime, $preUnload, $preSmalls, $preNotes, $updatedBy, $preload );
+        mysqli_stmt_execute($stmt);
+    }
+    
+// Prepare a sql statement for outbound
+    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, vanlines = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ssssssss", $preStart, $preDate, $prePrime, $preUnload, $preSmalls, $preNotes, $updatedBy, $preload );
+            mysqli_stmt_bind_param($stmt, "ssssssss", $obStart, $obDate, $obPrime, $obVanline, $obSmalls, $obNotes, $updatedBy, $outbound );
             mysqli_stmt_execute($stmt);
         }
-        
-    // Prepare a sql statement for outbound
-        $sql = "UPDATE times SET start = ?, date = ?, prime = ?, vanlines = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
-            if($stmt = mysqli_prepare($link, $sql)){
-                mysqli_stmt_bind_param($stmt, "ssssssss", $obStart, $obDate, $obPrime, $obVanline, $obSmalls, $obNotes, $updatedBy, $outbound );
-                mysqli_stmt_execute($stmt);
-            }
-            mysqli_stmt_close($stmt);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
+        mysqli_stmt_close($stmt);
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
 ?>
-
 <html>
 
 <head>
@@ -107,10 +106,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdc-button mdc-button--raised">User Management</a> <?php } ?>
 <body>
     <?php if($updatedBy == "fxguser"){ ?>
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      Notice! The defualt fxguser account is depreciated and will be removed on March 1st. Please create a personal account using the "Add a User" menu from this page using your FedEx ID and password of your choice.
-    </div>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          Notice! The defualt fxguser account is depreciated and will be removed on March 1st. Please create a personal account using the "Add a User" menu from this page using your FedEx ID and password of your choice.
+        </div>
     <?php } ?>
     <div class="mdc-card">
         <h2>Edit the following fields below:</h2>
