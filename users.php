@@ -56,8 +56,34 @@ if(isset($_POST['Admin'])){
     }
 }
 
-// Delete
-if(isset($_POST['Delete'])){
+// Disable
+if(isset($_POST['Disable'])){
+    if(!empty($_POST['userChecked'])) {    
+        foreach($_POST['userChecked'] as $value){
+            $sql = "UPDATE users SET disabled = 'y' WHERE username = ?";
+            if($stmt = mysqli_prepare($link, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $value);
+                mysqli_stmt_execute($stmt);
+            }
+        }
+    }
+}
+
+// Enable
+if(isset($_POST['Enable'])){
+    if(!empty($_POST['userChecked'])) {    
+        foreach($_POST['userChecked'] as $value){
+            $sql = "UPDATE users SET disabled = '' WHERE username = ?";
+            if($stmt = mysqli_prepare($link, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $value);
+                mysqli_stmt_execute($stmt);
+            }
+        }
+    }
+}
+
+// Remove
+if(isset($_POST['Remove'])){
     if(!empty($_POST['userChecked'])) {    
         foreach($_POST['userChecked'] as $value){
             $sql = "DELETE FROM users WHERE username = ?";
@@ -123,6 +149,7 @@ if(isset($_POST['Delete'])){
                             <td>User</td>
                             <td>Created At</td>
                             <td>Is Admin</td>
+                            <td>Disabled</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -135,6 +162,7 @@ if(isset($_POST['Delete'])){
                                 <td><?php echo $row['username']?></td>
                                 <td><?php echo $row['created_at']?></td>
                                 <td><?php echo $row['isAdmin']?></td>
+                                <td><?php echo $row['disabled']?></td>
                             </tr>
             
                         <?php
@@ -144,9 +172,10 @@ if(isset($_POST['Delete'])){
                     </table>
                 </br>
                 <div>
-                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Delete" value="Delete">Delete</button>
-                    <!--<button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Reset" value="Reset">Remove admin</button>-->
+                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Disable" value="Disable">Disable</button>
+                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Enable" value="Enable">Enable</button>
                     <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Admin" value="Admin">Make admin</button>
+                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Remove" value="Remove">Remove</button>
                 </div>
            </div>
         </form>
