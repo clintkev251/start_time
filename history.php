@@ -14,7 +14,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 require_once "config.php"; 
 ?>
-
 <html>
     <head>
         <title>Submit History</title>
@@ -60,42 +59,42 @@ require_once "config.php";
     <body>
         <div class="mdc-card" style="overflow-x:auto;">
         <table>
-        <thead>
-            <tr>
-                <td>Sort</td>
-                <td>Date</td>
-                <td>Prime</td>
-                <td>Unload</td>
-                <td>Vanlines</td>
-                <td>Start</td>
-                <td>Smalls</td>
-                <td>Notes</td>
-                <td>Updated By</td>
-                <td>Updated At</td>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-            $results = mysqli_query($link, "SELECT * FROM timesHistory ORDER BY updateID DESC LIMIT 20");
-            while($row = mysqli_fetch_assoc($results)) {
-            ?>
+            <thead>
                 <tr>
-                    <td><?php echo $row['sort']?></td>
-                    <td><?php echo $row['date']?></td>
-                    <td><?php echo $row['prime']?></td>
-                    <td><?php echo $row['unload']?></td>
-                    <td><?php echo $row['vanlines']?></td>
-                    <td><?php echo $row['start']?></td>
-                    <td><?php echo $row['smalls']?></td>
-                    <td><?php echo $row['notes']?></td>
-                    <td><?php echo $row['updatedBy']?></td>
-                    <td><?php echo $row['updatedAt']?></td>
+                    <td>Sort</td>
+                    <td>Date</td>
+                    <td>Prime</td>
+                    <td>Unload</td>
+                    <td>Vanlines</td>
+                    <td>Start</td>
+                    <td>Smalls</td>
+                    <td>Notes</td>
+                    <td>Updated By</td>
+                    <td>Updated At</td>
                 </tr>
-
+            </thead>
+            <tbody>
             <?php
-            }
-            ?>
-            </tbody>
+                $results = mysqli_query($link, "SELECT * FROM timesHistory ORDER BY updateID DESC LIMIT 20");
+                while($row = mysqli_fetch_assoc($results)) {
+                ?>
+                    <tr>
+                        <td><?php echo $row['sort']?></td>
+                        <td><?php echo $row['date']?></td>
+                        <td><?php echo $row['prime']?></td>
+                        <td><?php echo $row['unload']?></td>
+                        <td><?php echo $row['vanlines']?></td>
+                        <td><?php echo $row['start']?></td>
+                        <td><?php echo $row['smalls']?></td>
+                        <td><?php echo $row['notes']?></td>
+                        <td><?php echo $row['updatedBy']?></td>
+                        <td><?php echo $row['updatedAt']?></td>
+                    </tr>
+    
+                <?php
+                }
+                ?>
+                </tbody>
             </table>
             </div>
     </body>
