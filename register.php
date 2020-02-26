@@ -10,6 +10,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 // Include config file
 require_once "config.php";
+
+$currentUser = $_SESSION["username"];
+$sql = "SELECT * FROM users WHERE username = ?";
+if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $currentUser);
+            mysqli_stmt_execute($stmt);
+            $result = $stmt->get_result();
+            $isAdmin = mysqli_fetch_assoc($result);
+        }
+//$isAdmin  = mysqli_fetch_assoc($stmt);
+if($isAdmin['isAdmin'] != "y"){
+    header("location: login.php");
+    exit;
+}
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
