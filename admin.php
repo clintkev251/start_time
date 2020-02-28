@@ -103,6 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <a href="logout.php" class="mdc-button mdc-button--raised">Home</a>
 <a href="history.php" class="mdc-button mdc-button--raised">Submit History</a>
 <a href="reset-password.php" class="mdc-button mdc-button--raised">Change your password</a>
+<a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
 <?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdc-button mdc-button--raised">User Management</a> <?php } ?>
 <body>
     <?php if($updatedBy == "fxguser"){ ?>
