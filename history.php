@@ -64,10 +64,10 @@ require_once "config.php";
                     <td>Sort</td>
                     <td>Date</td>
                     <td>Prime</td>
-                    <td>Unload</td>
-                    <td>Vanlines</td>
+                    <!--<td>Unload</td>-->
+                    <!--<td>Vanlines</td>-->
                     <td>Start</td>
-                    <td>Smalls</td>
+                    <!--<td>Smalls</td>-->
                     <td>Notes</td>
                     <td>Updated By</td>
                     <td>Updated At</td>
@@ -82,10 +82,10 @@ require_once "config.php";
                         <td><?php echo $row['sort']?></td>
                         <td><?php echo $row['date']?></td>
                         <td><?php echo $row['prime']?></td>
-                        <td><?php echo $row['unload']?></td>
-                        <td><?php echo $row['vanlines']?></td>
+                        <!--<td><?php echo $row['unload']?></td>-->
+                        <!--<td><?php echo $row['vanlines']?></td>-->
                         <td><?php echo $row['start']?></td>
-                        <td><?php echo $row['smalls']?></td>
+                        <!--<td><?php echo $row['smalls']?></td>-->
                         <td><?php echo $row['notes']?></td>
                         <td><?php echo $row['updatedBy']?></td>
                         <td><?php echo $row['updatedAt']?></td>

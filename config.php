@@ -11,5 +11,5 @@ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-mysqli_query($link, "SET time_zone = '-5:00';");
+mysqli_query($link, "SET time_zone = 'US/Eastern';");
 ?>

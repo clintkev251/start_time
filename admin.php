@@ -24,11 +24,11 @@ if($stmt = mysqli_prepare($link, $sql)){
         }
 
 // Get existing data from database - Preload
-$sql = mysqli_query($link, "SELECT start,prime,date,unload,smalls,notes FROM times WHERE sort = 'preload'");
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'preload'");
 $preloadTimes = mysqli_fetch_assoc($sql);
 $updatedBy = $_SESSION["username"];
 // Outbound
-$sql = mysqli_query($link, "SELECT start,prime,date,vanlines,smalls,notes FROM times WHERE sort = 'outbound'");
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'outbound'");
 $outboundTimes = mysqli_fetch_assoc($sql);
 
 
@@ -41,30 +41,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $preStart = trim($_POST["start"]);
     $prePrime = trim($_POST["prime"]);
     $preDate = trim($_POST["date"]);
-    $preUnload = trim($_POST["unload"]);
-    $preSmalls = trim($_POST["smalls"]);
     $preNotes = trim($_POST["notes"]);
 // Outbound
     $outbound = "outbound";
     $obStart = trim($_POST["startOB"]);
     $obPrime = trim($_POST["primeOB"]);
     $obDate = trim($_POST["dateOB"]);
-    $obVanline = trim($_POST["vanlineOB"]);
-    $obSmalls = trim($_POST["smallsOB"]);
     $obNotes = trim($_POST["notesOB"]);
 //Create hashes from new data to detect changes
     
 // Prepare a sql statement for Preload
-    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, unload = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, notes = ?, updatedBy = ? WHERE sort = ?";
     if($stmt = mysqli_prepare($link, $sql)){
-        mysqli_stmt_bind_param($stmt, "ssssssss", $preStart, $preDate, $prePrime, $preUnload, $preSmalls, $preNotes, $updatedBy, $preload );
+        mysqli_stmt_bind_param($stmt, "ssssss", $preStart, $preDate, $prePrime, $preNotes, $updatedBy, $preload );
         mysqli_stmt_execute($stmt);
     }
     
 // Prepare a sql statement for outbound
-    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, vanlines = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
+    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, notes = ?, updatedBy = ? WHERE sort = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ssssssss", $obStart, $obDate, $obPrime, $obVanline, $obSmalls, $obNotes, $updatedBy, $outbound );
+            mysqli_stmt_bind_param($stmt, "ssssss", $obStart, $obDate, $obPrime, $obNotes, $updatedBy, $outbound );
             mysqli_stmt_execute($stmt);
         }
         mysqli_stmt_close($stmt);
@@ -118,16 +114,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
             <h3>Preload:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($preloadTimes["date"]);?>" name="date" readonly></br></br>
-            <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["unload"]); ?>" name="unload"> AM</br></br>
             <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["prime"]); ?>" name="prime"> AM</br></br>
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["start"]); ?>" name="start"> AM</br></br>
-            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["smalls"]); ?>" name="smalls"> AM</br></br>
             <i>Notes:</i> <input type="text" value="<?php echo($preloadTimes["notes"]); ?>" name="notes"></br></br>
             <h3>Outbound:</h3>
             Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($outboundTimes["date"]);?>" name="dateOB"readonly></br></br>
             <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["prime"]);?>"name="primeOB"> PM</br></br>
-            <i>Vanline:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["vanlines"]);?>"name="vanlineOB"> PM</br></br>
-            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["smalls"]);?>"name="smallsOB"> PM</br></br>
             Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["start"]);?>"name="startOB"> PM</br></br>
             <i>Notes:</i> <input type="text" value="<?php echo($outboundTimes["notes"]);?>" name="notesOB"></br></br>
             <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
