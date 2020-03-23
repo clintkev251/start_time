@@ -18,7 +18,7 @@ $outboundTimes = mysqli_fetch_assoc($sql);
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="styles.css" type="text/css" />
     <meta name="theme-color" content="#0a00b6">
-    <title>Raleigh Start</title>
+    <title>276Start</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
