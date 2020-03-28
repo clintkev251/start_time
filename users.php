@@ -114,26 +114,9 @@ if(isset($_POST['Remove'])){
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-        <style>
-            table, th, td {
-              border: 2px solid black;
-              border-collapse: collapse;
-              padding: 5px;
-            }
-            table {
-              width: 100%;
-            }
-            
-            tr {
-              height: 50px;
-              
-            }
-            thead {
-                font-weight: bold;
-                color: white;
-                background-color: #50A;
-            }
-        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-cyan.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     </head>
     
     <a class="mdc-button mdc-button--raised" href="admin.php">Back</a>
@@ -142,14 +125,14 @@ if(isset($_POST['Remove'])){
     <body>
         <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="mdc-card" style="overflow-x:auto;">
-                <table>
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                     <thead>
                         <tr>
-                            <td></td>
-                            <td>User</td>
-                            <td>Created At</td>
-                            <td>Is Admin</td>
-                            <td>Disabled</td>
+                            <td></th>
+                            <th class="mdl-data-table__cell--non-numeric">User</th>
+                            <th>Created At</th>
+                            <th>Is Admin</th>
+                            <th>Disabled</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -158,7 +141,10 @@ if(isset($_POST['Remove'])){
                         while($row = mysqli_fetch_assoc($results)) {
                         ?>
                             <tr>
-                                <td><input type="checkbox" name="userChecked[]" value="<?php echo $row['username'] ?>"/></td>
+                                <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<?php echo $row['username'] ?>">
+                                  <input type="checkbox" name="userChecked[]" id="<?php echo $row['username'] ?>" value="<?php echo $row['username'] ?>" class="mdl-checkbox__input">
+                                  <span class="mdl-checkbox__label"></span>
+                                </label></td>
                                 <td><?php echo $row['username']?></td>
                                 <td><?php echo $row['created_at']?></td>
                                 <td><?php echo $row['isAdmin']?></td>
