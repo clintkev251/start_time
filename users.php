@@ -154,7 +154,7 @@ if(isset($_POST['Remove'])){
                     </thead>
                     <tbody>
                     <?php
-                        $results = mysqli_query($link, "SELECT * FROM users ORDER BY id");
+                        $results = mysqli_query($link, "SELECT * FROM users WHERE hidden = '' ORDER BY id");
                         while($row = mysqli_fetch_assoc($results)) {
                         ?>
                             <tr>
