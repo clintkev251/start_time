@@ -1,45 +1,80 @@
 body,
-        html {
-            height: 100%;
-            margin: 0;
-            font-family: "Roboto", "serif";
-        }
+html {
+    height: 100%;
+    margin: 0;
+    font-family: "Roboto", "serif";
+}
 
-        h2,
-        h3 {
-            font-family: "Roboto", "serif"
-        }
+h4,
+h5,
+h6{
+    font-weight: 500;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+.row {
+  display: flex;
+}
 
-        body {
-            background-image: url("/img/background.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+.column {
+  flex: 50%;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+.mdl-textfield {  
+    margin-bottom: 0px;
+}
 
-        .mdc-card {
-            margin: 2%;
-            padding: 1%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        .mdc-button__label {
-            font-family: "Roboto", "sarif";
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        .mdc-button {
-            margin: 0.5%;
-        }
+body {
+    background-image: url("/img/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.mdc-card{
+    margin: 2%;
+    padding: 1%;
+    display: flex;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    text-align: center;
+}
+.mdl-card {
+    margin: 2%;
+    padding: 1%;
+    display: flex;
+}
+
+.mdl-data-table,
+.mdl-card {
+    overflow-x:auto;
+    margin-left:auto; 
+    margin-right:auto; 
+}
+
+.mdc-button__label {
+    font-family: "Roboto", "sarif";
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.mdc-button,
+.mdl-button {
+    margin: 0.5%;
+}
+@media only screen and (min-width: 768px) {
+    #leftbox { 
+        float:left;
+        width:50%;
+    } 
+    #middlebox{ 
+        float:left;
+    } 
+    #rightbox{ 
+        float:right;
+        width:50%;
+    }
+}

@@ -73,64 +73,87 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <html>
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link href="/cal/css/datepicker.min.css" rel="stylesheet" type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <script src="/cal/js/datepicker.min.js"></script>
-    <meta name="theme-color" content="#0a00b6">
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-    <!-- Include English language -->
-    <script src="/cal/js/i18n/datepicker.en.js"></script>
-    <title>Start Time Administration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>.alert {
-      padding: 20px;
-      background-color: #f44336; /* Red */
-      color: white;
-      margin-bottom: 15px;
-    }
-</style>
-</head>
-<a href="logout.php" class="mdc-button mdc-button--raised">Home</a>
-<a href="history.php" class="mdc-button mdc-button--raised">Submit History</a>
-<a href="reset-password.php" class="mdc-button mdc-button--raised">Change your password</a>
-<a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
-<?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdc-button mdc-button--raised">User Management</a> <?php } ?>
+<?php include "head.php" ?>
+
+<a href="logout.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Home</a>
+<a href="history.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit History</a>
+<a href="reset-password.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Change your password</a>
+<a href="register.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Add a user</a>
+<?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">User Management</a> <?php } ?>
 <body>
-    <?php if($updatedBy == "fxguser"){ ?>
-        <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          Notice! The defualt fxguser account is depreciated and will be removed on March 1st. Please create a personal account using the "Add a User" menu from this page using your FedEx ID and password of your choice.
-        </div>
-    <?php } ?>
     <div class="mdc-card">
-        <h2>Edit the following fields below:</h2>
-        <h4>(Fields in <i>italics</i> are optional)</h4>
-        <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
-            <h3>Preload:</h3>
-            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($preloadTimes["date"]);?>" name="date" readonly></br></br>
-            <i>Unload:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["unload"]); ?>" name="unload"> AM</br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["prime"]); ?>" name="prime"> AM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["start"]); ?>" name="start"> AM</br></br>
-            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["smalls"]); ?>" name="smalls"> AM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($preloadTimes["notes"]); ?>" name="notes"></br></br>
-            <h3>Outbound:</h3>
-            Date: <input type="text" class="datepicker-here" data-language='en' data-date-format='DD MM d' value="<?php echo($outboundTimes["date"]);?>" name="dateOB"readonly></br></br>
-            <i>Prime:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["prime"]);?>"name="primeOB"> PM</br></br>
-            <i>Vanline:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["vanlines"]);?>"name="vanlineOB"> PM</br></br>
-            <i>Smalls:</i> <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["smalls"]);?>"name="smallsOB"> PM</br></br>
-            Start: <input type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["start"]);?>"name="startOB"> PM</br></br>
-            <i>Notes:</i> <input type="text" value="<?php echo($outboundTimes["notes"]);?>" name="notesOB"></br></br>
-            <button class="mdc-button mdc-button--raised" style="margin: auto;" type="submit" name="submit"
+        <h4>Edit the following fields below:</h4>
+        
+        <div id="boxes">
+            <div id="leftbox">
+                <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
+                    <h5>Preload:</h5>
+                    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="datepicker-here mdl-textfield__input" data-language='en' data-date-format='DD MM d' value="<?php echo($preloadTimes["date"]);?>" name="date" id="dateIB"readonly>
+                        <label class="mdl-textfield__label mdl-textfield__input" for="dateIB">Date</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="ibUnload" type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["unload"]); ?>" name="unload">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="ibUnload">Unload (AM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="ibPrime" type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["prime"]); ?>" name="prime">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="ibPrime">Prime (AM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="ibStart" type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["start"]); ?>" name="start">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="ibStart">Start (AM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="ibSmalls" type="text" maxlength="5" style="width: 130px;" value="<?php echo($preloadTimes["smalls"]); ?>" name="smalls">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="ibSmalls">Smalls (AM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea class="mdl-textfield__input" id="ibNotes" rows="3" type="text" value="<?php echo($preloadTimes["notes"]); ?>" name="notes"><?php echo($preloadTimes["notes"]); ?></textarea>
+                        <label class="mdl-textfield__label" for="ibNotes">Notes</label>
+                    </div>
+                </div>
+                <div id="rightbox">
+                    <h5>Outbound:</h5>
+                    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="datepicker-here mdl-textfield__input" id="obDate" data-language='en' data-date-format='DD MM d' value="<?php echo($outboundTimes["date"]);?>" name="dateOB"readonly>
+                        <label class="mdl-textfield__label mdl-textfield__input" for="obDate">Date</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="obPrime" type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["prime"]);?>"name="primeOB">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="obPrime">Prime (PM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="obVanlines" type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["vanlines"]);?>"name="vanlineOB">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="obVanlines">Vanlines (PM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="obSmalls" type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["smalls"]);?>"name="smallsOB">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="obSmalls">Smalls (PM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="obStart" type="text" maxlength="5" style="width: 130px;" value="<?php echo($outboundTimes["start"]);?>"name="startOB">
+                        <label class="mdl-textfield__label mdl-textfield__input" for="obStart">Start (PM)</label>
+                    </div>
+                    </br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea class="mdl-textfield__input" id="ibNotes" rows="3" type="text" value="<?php echo($outboundTimes["notes"]); ?>" name="notes"><?php echo($outboundTimes["notes"]); ?></textarea>
+                        <label class="mdl-textfield__label" for="ibNotes">Notes</label>
+                    </div>
+                </div>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin: auto;" type="submit" name="submit"
                 value="Submit">Submit</button>
         </form>
     </div>
