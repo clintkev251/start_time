@@ -97,73 +97,51 @@ if(isset($_POST['Remove'])){
 ?>
 
 <html>
-    <head>
-        <title>User Management</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="styles.css" type="text/css" />
-        <meta charset="utf-8">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-cyan.min.css" />
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    </head>
+    <?php include "head.php" ?>
     
-    <a class="mdc-button mdc-button--raised" href="admin.php">Back</a>
-    <a href="register.php" class="mdc-button mdc-button--raised">Add a user</a>
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="admin.php">Back</a>
+    <a href="register.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Add a user</a>
     
     <body>
         <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="mdc-card" style="overflow-x:auto;">
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                    <thead>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <td></th>
+                        <th class="mdl-data-table__cell--non-numeric">User</th>
+                        <th>Created At</th>
+                        <th>Is Admin</th>
+                        <th>Disabled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $results = mysqli_query($link, "SELECT * FROM users ORDER BY id");
+                    while($row = mysqli_fetch_assoc($results)) {
+                    ?>
                         <tr>
-                            <td></th>
-                            <th class="mdl-data-table__cell--non-numeric">User</th>
-                            <th>Created At</th>
-                            <th>Is Admin</th>
-                            <th>Disabled</th>
+                            <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<?php echo $row['username'] ?>">
+                              <input type="checkbox" name="userChecked[]" id="<?php echo $row['username'] ?>" value="<?php echo $row['username'] ?>" class="mdl-checkbox__input">
+                              <span class="mdl-checkbox__label"></span>
+                            </label></td>
+                            <td><?php echo $row['username']?></td>
+                            <td><?php echo $row['created_at']?></td>
+                            <td><?php echo $row['isAdmin']?></td>
+                            <td><?php echo $row['disabled']?></td>
                         </tr>
-                    </thead>
-                    <tbody>
+        
                     <?php
-                        $results = mysqli_query($link, "SELECT * FROM users ORDER BY id");
-                        while($row = mysqli_fetch_assoc($results)) {
-                        ?>
-                            <tr>
-                                <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<?php echo $row['username'] ?>">
-                                  <input type="checkbox" name="userChecked[]" id="<?php echo $row['username'] ?>" value="<?php echo $row['username'] ?>" class="mdl-checkbox__input">
-                                  <span class="mdl-checkbox__label"></span>
-                                </label></td>
-                                <td><?php echo $row['username']?></td>
-                                <td><?php echo $row['created_at']?></td>
-                                <td><?php echo $row['isAdmin']?></td>
-                                <td><?php echo $row['disabled']?></td>
-                            </tr>
-            
-                        <?php
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                </br>
-                <div>
-                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Disable" value="Disable">Disable</button>
-                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Enable" value="Enable">Enable</button>
-                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Admin" value="Admin">Make admin</button>
-                    <button class="mdc-button mdc-button" style="margin: auto;" type="submit" name="Remove" value="Remove">Remove</button>
-                </div>
-           </div>
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </br>
+            <div class="mdl-card" style="overflow-x:auto;">
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Disable" value="Disable">Disable</button>
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Enable" value="Enable">Enable</button>
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Admin" value="Admin">Make admin</button>
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Remove" value="Remove">Remove</button>
+            </div>
         </form>
     </body>
 </html>
