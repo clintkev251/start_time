@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: admin.php");
+    header("location: success.html");
     exit;
 }
  
@@ -92,20 +92,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 
 <?php include "head.php" ?>
-
+<style type="text/css">
+    .mdl-textfield{padding-bottom: 16px;}
+</style>
 <body>
     <div class="mdl-card">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+            <div class="<?php echo (!empty($username_err)) ? 'has-error' : ''; ?> mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input type="text" name="username" class="mdl-textfield__input" value="<?php echo $username; ?>">
+                <label class="mdl-textfield__label" for="ibSmalls">Username</label>
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
+            <div class="<?php echo (!empty($password_err)) ? 'has-error' : ''; ?> mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input type="password" name="password" class="mdl-textfield__input">
+                <label class="mdl-textfield__label" for="ibSmalls">Password</label>
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
