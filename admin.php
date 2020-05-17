@@ -73,22 +73,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_bind_param($stmt, "sssssssss", $preStart, $preDate, $prePrime, $preUnload, $preVanlines, $preSmalls, $preNotes, $updatedBy, $preload );
         mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
     }
     
+    
 // Prepare a sql statement for outbound
-    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, unload = ? vanlines = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "sssssssss", $obStart, $obDate, $obPrime, $obUnload, $obVanlines, $obSmalls, $obNotes, $updatedBy, $outbound );
             mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
         }
 
 // Prepare a sql statement for otp
-    $sql = "UPDATE times SET start = ?, date = ?, prime = ?, unload = ? vanlines = ?, smalls = ?, notes = ?, updatedBy = ? WHERE sort = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "sssssssss", $otpStart, $otpDate, $otpPrime, $otpUnload, $otpVanlines, $otpSmalls, $otpNotes, $updatedBy, $otp );
             mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
         }
-        mysqli_stmt_close($stmt);
         echo "<meta http-equiv='refresh' content='0'>";
     }
 ?>
@@ -212,7 +213,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label class="mdl-textfield__label" for="otpSmalls">Smalls (PM)</label>
                         <!--</br>-->
                     </div>
-                    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpStartFlag){ ?> style=display:none <?php } ?>>
+                        <input class="mdl-textfield__input" id="otpStart" type="text" maxlength="5"  value="<?php echo($otpTimes["start"]);?>"name="startOTP">
+                        <label class="mdl-textfield__label" for="otpStart">Start (PM)</label>
+                        <!--</br>-->
+                    </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <textarea class="mdl-textfield__input" id="obNotes" rows="3" type="text" value="<?php echo($otpTimes["notes"]); ?>" name="notesOTP"><?php echo($otpTimes["notes"]); ?></textarea>
                         <label class="mdl-textfield__label" for="otpNotes">Notes</label>
