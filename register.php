@@ -3,13 +3,15 @@
 // Initialize the session
 session_start();
 
-Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
 // Include config file
 require_once "config.php";
+
+$currentUser = $_SESSION["username"];
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -17,13 +19,11 @@ $username_err = $password_err = $confirm_password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate registration code
-    // if(trim($_POST["regCode"] != "ZGRDusrReg46546874sfd")){
-    //     $regCode_err = "Please enter a valid registration code.";
-    // }
+    //Get refering user
+    $referrer = $_SESSION["username"];
     // Validate username
     if(empty(trim($_POST["username"])) || !is_numeric(trim($_POST["username"]))){
-        $username_err = "Please enter a valid ID.";
+        $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE username = ?";
@@ -77,11 +77,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($regCode_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (username, password, referedBy) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $referrer);
             
             // Set parameters
             $param_username = $username;
@@ -128,38 +128,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <div class="mdc-card">
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <!--<div class="form-group <?php echo (!empty($regCode_err)) ? 'has-error' : ''; ?>">-->
-            <!--    <label>Registration Code</label>-->
-            <!--    <input type="text" name="regCode" class="form-control" value="<?php echo $regCode; ?>"/>-->
-            <!--    <span class="help-block"><?php echo $regCode_err; ?></span>-->
-            <!--</div>-->
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>FedEx ID</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-                
-            </div>
-            <a href="admin.php">Back</a>
-        </form>
-    </div>
+        <div class="wrapper">
+            <h2>Sign Up</h2>
+            <p>Please fill this form to create an account.</p>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <label>FedEx ID</label>
+                    <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                    <span class="help-block"><?php echo $username_err; ?></span>
+                </div>    
+                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+                    <span class="help-block"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="reset" class="btn btn-default" value="Reset">
+                    
+                </div>
+                <a href="admin.php">Back</a>
+            </form>
+        </div>
     </div>
 </body>
 </html>

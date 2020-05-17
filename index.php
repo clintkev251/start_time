@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <?php
 require_once "config.php";
 // Get existing data from database - Preload
@@ -10,60 +10,103 @@ $preloadTimes = mysqli_fetch_assoc($sql);
 // Outbound
 $sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'outbound'");
 $outboundTimes = mysqli_fetch_assoc($sql);
+
+// OTP
+// Outbound
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'otp'");
+$otpTimes = mysqli_fetch_assoc($sql);
+
+include "head.php";
+
 ?>
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-    <meta name="theme-color" content="#0a00b6">
-    <title>CADI Start</title>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-</head>
-<a class="mdc-button mdc-button--raised" href="/admin.php">Admin</a>
+
+<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="admin.php">Admin</a>
 
 <body>
-
-    <div class="mdc-card">
-        <h2>Preload start time for
-            <?php echo($preloadTimes["date"]);?>
-        </h2>
-        <?php if ($preloadTimes["prime"] != ""): ?>
-        <h3>Prime:
-            <?php echo($preloadTimes["prime"]);?>AM</h3>
-        <?php endif ?>
-        <h3>Start:
-            <?php echo($preloadTimes["start"]);?> AM</h3>
-        <?php if($preloadTimes["notes"] != ""): ?>
-        <h3>
-            <?php echo($preloadTimes["notes"]); ?>
-        </h3>
-        <?php endif ?>
-    </div>
-    <div class="mdc-card">
-        <h2>Outbound start time for <?php echo($outboundTimes["date"]);?></h2>
-        <?php if($outboundTimes["prime"] != ""): ?>
-        <h3>Prime: <?php echo($outboundTimes["prime"]);?>PM</h3>
-        <?php endif ?>
-        <h3>Start: <?php echo($outboundTimes["start"]);?> PM</h3>
-        <?php if($outboundTimes["notes"] !=""): ?>
-        <h3>
-        <?php echo($outboundTimes["notes"]);?>
-        </h3>
-        <?php endif ?>
-    </div>
+    <?php if($preloadFlag){ ?>
+        <div class="mdc-card">
+            <h4>Preload start time for
+                <?php echo($preloadTimes["date"]);?>
+            </h4>
+            <?php if ($preloadTimes["unload"] != ""): ?>
+            <h6>Unload:
+                <?php echo($preloadTimes["unload"]);?> AM</h6>
+            <?php endif ?>
+            <?php if($preloadTimes["vanlines"] != ""): ?>
+            <h6>Vanlines: <?php echo($preloadTimes["vanlines"]);?> AM</h6>
+            <?php endif ?>
+            <?php if ($preloadTimes["prime"] != ""): ?>
+            <h6>Prime:
+                <?php echo($preloadTimes["prime"]);?> AM</h6>
+            <?php endif ?>
+            <?php if ($preloadTimes["smalls"] != ""): ?>
+            <h6>Smalls:
+                <?php echo($preloadTimes["smalls"]);?> AM</h6>
+            <?php endif ?>
+            <h6>Start:
+                <?php echo($preloadTimes["start"]);?> AM</h6>
+            <?php if($preloadTimes["notes"] != ""): ?>
+            <h6>
+                <?php echo($preloadTimes["notes"]); ?>
+            </h6>
+            <?php endif ?>
+        </div>
+    <?php }
+    if($outboundFlag){ ?>
+        <div class="mdc-card">
+            <h4>Outbound start time for <?php echo($outboundTimes["date"]);?></h4>
+            <?php if ($outboundTimes["unload"] != ""): ?>
+            <h6>Unload:
+                <?php echo($outboundTimes["unload"]);?> PM</h6>
+            <?php endif ?>
+            <?php if($outboundTimes["vanlines"] != ""): ?>
+            <h6>Vanlines: <?php echo($outboundTimes["vanlines"]);?> PM</h6>
+            <?php endif ?>
+            <?php if ($outboundTimes["prime"] != ""): ?>
+            <h6>Prime:
+                <?php echo($outboundTimes["prime"]);?> PM</h6>
+            <?php endif ?>
+            <?php if ($outboundTimes["smalls"] != ""): ?>
+            <h6>Smalls:
+                <?php echo($outboundTimes["smalls"]);?> PM</h6>
+            <?php endif ?>
+            <h6>Start:
+                <?php echo($outboundTimes["start"]);?> PM</h6>
+            <?php if($outboundTimes["notes"] != ""): ?>
+            <h6>
+                <?php echo($outboundTimes["notes"]); ?>
+            </h6>
+            <?php endif ?>
+        </div>
+    <?php }
+    if($otpFlag){ ?>
+        <div class="mdc-card">
+            <h4>Outbound start time for <?php echo($otpTimes["date"]);?></h4>
+            <?php if ($otpTimes["unload"] != ""): ?>
+            <h6>Unload:
+                <?php echo($otpTimes["unload"]);?> PM</h6>
+            <?php endif ?>
+            <?php if($otpTimes["vanlines"] != ""): ?>
+            <h6>Vanlines: <?php echo($otpTimes["vanlines"]);?> PM</h6>
+            <?php endif ?>
+            <?php if ($otpTimes["prime"] != ""): ?>
+            <h6>Prime:
+                <?php echo($otpTimes["prime"]);?> PM</h6>
+            <?php endif ?>
+            <?php if ($otpTimes["smalls"] != ""): ?>
+            <h6>Smalls:
+                <?php echo($otpTimes["smalls"]);?> PM</h6>
+            <?php endif ?>
+            <h6>Start:
+                <?php echo($otpTimes["start"]);?> PM</h6>
+            <?php if($otpTimes["notes"] != ""): ?>
+            <h6>
+                <?php echo($otpTimes["notes"]); ?>
+            </h6>
+            <?php endif ?>
+        </div>
+    <?php } ?>
 </body>
 
 </html>
