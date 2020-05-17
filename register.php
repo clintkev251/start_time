@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
+                /* store re.hsult */
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
