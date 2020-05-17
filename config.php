@@ -14,4 +14,27 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 mysqli_query($link, "SET time_zone = 'US/Eastern';");
+
+
+// Sort Options
+
+// Basic config
+$stationName = "ZGRD";
+$preloadFlag = true;
+$outboundFlag = true;
+$otpFlag = false;
+
+// Preload options
+
+$preloadFields[] = ["Unload", "Prime", "Smalls", "Start", "Notes"];
+
+// Outbound options
+
+$outboundFields[] = ["Prime", "Vanlines", "Smalls", "Start", "Notes"];
+
+// OTP options
+
+$otpFields[] = [];
+
+
 ?>

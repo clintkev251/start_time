@@ -11,6 +11,11 @@ $preloadTimes = mysqli_fetch_assoc($sql);
 $sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'outbound'");
 $outboundTimes = mysqli_fetch_assoc($sql);
 
+// OTP
+// Outbound
+$sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'otp'");
+$otpTimes = mysqli_fetch_assoc($sql);
+
 include "head.php";
 
 ?>
@@ -19,6 +24,7 @@ include "head.php";
 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="admin.php">Admin</a>
 
 <body>
+    <?php if($preloadFlag){ ?> 
     <div class="mdc-card">
         <h4>Preload start time for
             <?php echo($preloadTimes["date"]);?>
@@ -43,6 +49,8 @@ include "head.php";
         </h6>
         <?php endif ?>
     </div>
+    <?php } 
+    if($outboundFlag){ ?>
     <div class="mdc-card">
         <h4>Outbound start time for <?php echo($outboundTimes["date"]);?></h4>
         <?php if($outboundTimes["prime"] != ""): ?>
@@ -61,6 +69,7 @@ include "head.php";
         </h6>
         <?php endif ?>
     </div>
+    <?php } ?>
 </body>
 
 </html>
