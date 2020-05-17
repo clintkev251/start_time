@@ -24,17 +24,29 @@ $preloadFlag = true;
 $outboundFlag = true;
 $otpFlag = false;
 
-// Preload options
+// Preload fields
 
-$preloadFields[] = ["Unload", "Prime", "Smalls", "Start", "Notes"];
+$preloadUnloadFlag = true;
+$preloadVanlinesFlag = false;
+$preloadPrimeFlag = true;
+$preloadSmallsFlag = true;
+$preloadStartFlag = true;
 
-// Outbound options
+// Outbound fields
 
-$outboundFields[] = ["Prime", "Vanlines", "Smalls", "Start", "Notes"];
+$outboundUnloadFlag = false;
+$outboundVanlinesFlag = true;
+$outboundPrimeFlag = true;
+$outboundSmallsFlag = true;
+$outboundStartFlag = true;
 
 // OTP options
 
-$otpFields[] = [];
+$otpUnloadFlag = false;
+$otpVanlinesFlag = false;
+$otpPrimeFlag = false;
+$otpSmallsFlag = false;
+$otpStartFlag = false;
 
 
 ?>
