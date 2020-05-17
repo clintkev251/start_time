@@ -6,6 +6,11 @@ html {
     height: 100%;
     margin: 0;
     font-family: "Roboto", "serif";
+     background: url(img/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 
@@ -30,11 +35,6 @@ a {
     color: inherit;
 }
 
-body {
-    background-image: url("/img/background.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
 .mdc-card{
     margin: 2%;
