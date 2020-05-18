@@ -98,6 +98,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php include "head.php" ?>
 <style type="text/css">
     .mdl-textfield{padding-bottom: 24px;}
+    .alert {
+      padding: 20px;
+      background-color: #f44336; /* Red */
+      color: white;
+      margin-bottom: 15px;
+    }
 </style>
 <a href="logout.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Home</a>
 <a href="history.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit History</a>
@@ -105,6 +111,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <a href="register.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Add a user</a>
 <?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">User Management</a> <?php } ?>
 <body>
+    <?php if($updatedBy == "fxguser"){ ?>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          Notice! You now have the ability to create your own unique user account. In order to improve security, the existing "fxguser" account will be removed on 6/18. Please create a personal account using the "Add a User" button above using your FedEx ID and password of your choice.
+        </div>
+    <?php } ?>
     <div class="mdc-card">
         <h4>Edit the following fields below:</h4>
             <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
