@@ -117,29 +117,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$preloadUnloadFlag){ ?> style=display:none <?php } ?> >
-                        <input class="mdl-textfield__input" id="ibUnload" type="text" maxlength="5"  value="<?php echo($preloadTimes["unload"]); ?>" name="unload">
-                        <label class="mdl-textfield__label" for="ibUnload">Unload (AM)</label>
+                        <input class="mdl-textfield__input" id="ibUnload" type="text" maxlength="8"  value="<?php echo($preloadTimes["unload"]); ?>" name="unload">
+                        <label class="mdl-textfield__label" for="ibUnload">Unload</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$preloadVanlinesFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="ibVanlines" type="text" maxlength="5"  value="<?php echo($preloadTimes["vanlines"]); ?>" name="vanlines">
-                        <label class="mdl-textfield__label" for="ibVanlines">Vanlines (AM)</label>
+                        <input class="mdl-textfield__input" id="ibVanlines" type="text" maxlength="8"  value="<?php echo($preloadTimes["vanlines"]); ?>" name="vanlines">
+                        <label class="mdl-textfield__label" for="ibVanlines">Vanlines</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$preloadPrimeFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="ibPrime" type="text" maxlength="5"  value="<?php echo($preloadTimes["prime"]); ?>" name="prime">
-                        <label class="mdl-textfield__label" for="ibPrime">Prime (AM)</label>
+                        <input class="mdl-textfield__input" id="ibPrime" type="text" maxlength="8"  value="<?php echo($preloadTimes["prime"]); ?>" name="prime">
+                        <label class="mdl-textfield__label" for="ibPrime">Prime</label>
                         <!--</br>-->                    
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$preloadStartFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="ibStart" type="text" maxlength="5"  value="<?php echo($preloadTimes["start"]); ?>" name="start">
-                        <label class="mdl-textfield__label" for="ibStart">Start (AM)</label>
+                        <input class="mdl-textfield__input" id="ibStart" type="text" maxlength="8"  value="<?php echo($preloadTimes["start"]); ?>" name="start">
+                        <label class="mdl-textfield__label" for="ibStart">Start</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$preloadSmallsFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="ibSmalls" type="text" maxlength="5" value="<?php echo($preloadTimes["smalls"]); ?>" name="smalls">
-                        <label class="mdl-textfield__label" for="ibSmalls">Smalls (AM)</label>
+                        <input class="mdl-textfield__input" id="ibSmalls" type="text" maxlength="8" value="<?php echo($preloadTimes["smalls"]); ?>" name="smalls">
+                        <label class="mdl-textfield__label" for="ibSmalls">Smalls</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -156,28 +156,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$outboundPrimeFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="obPrime" type="text" maxlength="5"  value="<?php echo($outboundTimes["prime"]);?>"name="primeOB">
-                        <label class="mdl-textfield__label" for="obPrime">Prime (PM)</label>
+                        <input class="mdl-textfield__input" id="obPrime" type="text" maxlength="8"  value="<?php echo($outboundTimes["prime"]);?>"name="primeOB">
+                        <label class="mdl-textfield__label" for="obPrime">Prime</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$outboundUnloadFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="obUnload" type="text" maxlength="5"  value="<?php echo($outboundTimes["unload"]);?>"name="unloadOB">
-                        <label class="mdl-textfield__label" for="obUnload">Unload (PM)</label>
+                        <input class="mdl-textfield__input" id="obUnload" type="text" maxlength="8"  value="<?php echo($outboundTimes["unload"]);?>"name="unloadOB">
+                        <label class="mdl-textfield__label" for="obUnload">Unload</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$outboundVanlinesFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="obVanlines" type="text" maxlength="5"  value="<?php echo($outboundTimes["vanlines"]);?>"name="vanlinesOB">
-                        <label class="mdl-textfield__label" for="obVanlines">Vanlines (PM)</label>
+                        <input class="mdl-textfield__input" id="obVanlines" type="text" maxlength="8"  value="<?php echo($outboundTimes["vanlines"]);?>"name="vanlinesOB">
+                        <label class="mdl-textfield__label" for="obVanlines">Vanlines</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$outboundSmallsFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="obSmalls" type="text" maxlength="5"  value="<?php echo($outboundTimes["smalls"]);?>"name="smallsOB">
-                        <label class="mdl-textfield__label" for="obSmalls">Smalls (PM)</label>
+                        <input class="mdl-textfield__input" id="obSmalls" type="text" maxlength="8"  value="<?php echo($outboundTimes["smalls"]);?>"name="smallsOB">
+                        <label class="mdl-textfield__label" for="obSmalls">Smalls</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$outboundStartFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="obStart" type="text" maxlength="5"  value="<?php echo($outboundTimes["start"]);?>"name="startOB">
-                        <label class="mdl-textfield__label" for="obStart">Start (PM)</label>
+                        <input class="mdl-textfield__input" id="obStart" type="text" maxlength="8"  value="<?php echo($outboundTimes["start"]);?>"name="startOB">
+                        <label class="mdl-textfield__label" for="obStart">Start</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -194,28 +194,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpPrimeFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="otpPrime" type="text" maxlength="5"  value="<?php echo($otpTimes["prime"]);?>"name="primeOTP">
-                        <label class="mdl-textfield__label" for="otpPrime">Prime (PM)</label>
+                        <input class="mdl-textfield__input" id="otpPrime" type="text" maxlength="8"  value="<?php echo($otpTimes["prime"]);?>"name="primeOTP">
+                        <label class="mdl-textfield__label" for="otpPrime">Prime</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpUnloadFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="otpUnload" type="text" maxlength="5"  value="<?php echo($otpTimes["unload"]);?>"name="unloadOTP">
-                        <label class="mdl-textfield__label" for="otpUnload">Unload (PM)</label>
+                        <input class="mdl-textfield__input" id="otpUnload" type="text" maxlength="8"  value="<?php echo($otpTimes["unload"]);?>"name="unloadOTP">
+                        <label class="mdl-textfield__label" for="otpUnload">Unload</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpVanlinesFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="otpVanlines" type="text" maxlength="5"  value="<?php echo($otpTimes["vanlines"]);?>"name="vanlinesOTP">
-                        <label class="mdl-textfield__label" for="otpVanlines">Vanlines (PM)</label>
+                        <input class="mdl-textfield__input" id="otpVanlines" type="text" maxlength="8"  value="<?php echo($otpTimes["vanlines"]);?>"name="vanlinesOTP">
+                        <label class="mdl-textfield__label" for="otpVanlines">Vanlines</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpSmallsFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" type="text" id="otpSmalls" maxlength="5"  value="<?php echo($otpTimes["smalls"]);?>"name="smallsOTP">
-                        <label class="mdl-textfield__label" for="otpSmalls">Smalls (PM)</label>
+                        <input class="mdl-textfield__input" type="text" id="otpSmalls" maxlength="8"  value="<?php echo($otpTimes["smalls"]);?>"name="smallsOTP">
+                        <label class="mdl-textfield__label" for="otpSmalls">Smalls</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" <?php if(!$otpStartFlag){ ?> style=display:none <?php } ?>>
-                        <input class="mdl-textfield__input" id="otpStart" type="text" maxlength="5"  value="<?php echo($otpTimes["start"]);?>"name="startOTP">
-                        <label class="mdl-textfield__label" for="otpStart">Start (PM)</label>
+                        <input class="mdl-textfield__input" id="otpStart" type="text" maxlength="8"  value="<?php echo($otpTimes["start"]);?>"name="startOTP">
+                        <label class="mdl-textfield__label" for="otpStart">Start</label>
                         <!--</br>-->
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
