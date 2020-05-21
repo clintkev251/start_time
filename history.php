@@ -32,7 +32,6 @@ require_once "config.php";
                     <th>Vanlines</td>
                     <th>Start</td>
                     <th>Smalls</td>
-                    <th>Notes</td>
                     <th>Updated By</td>
                     <th>Updated At</td>
                 </tr>
@@ -50,7 +49,6 @@ require_once "config.php";
                         <td><?php echo $row['vanlines']?></td>
                         <td><?php echo $row['start']?></td>
                         <td><?php echo $row['smalls']?></td>
-                        <td><?php echo $row['notes']?></td>
                         <td><?php echo $row['updatedBy']?></td>
                         <td><?php echo $row['updatedAt']?></td>
                     </tr>
