@@ -82,7 +82,7 @@ include "head.php";
     <?php }
     if($otpFlag){ ?>
         <div class="mdc-card">
-            <h4>Outbound start time for <?php echo($otpTimes["date"]);?></h4>
+            <h4>OTP start time for <?php echo($otpTimes["date"]);?></h4>
             <?php if ($otpTimes["unload"] != ""): ?>
             <h6>Unload:
                 <?php echo($otpTimes["unload"]);?> </h6>
