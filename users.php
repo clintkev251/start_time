@@ -110,6 +110,7 @@ if(isset($_POST['Remove'])){
                         <td></th>
                         <th class="mdl-data-table__cell--non-numeric">User</th>
                         <th>Created At</th>
+                        <th>Refered By</th>
                         <th>Is Admin</th>
                         <th>Disabled</th>
                     </tr>
@@ -126,6 +127,7 @@ if(isset($_POST['Remove'])){
                             </label></td>
                             <td><?php echo $row['username']?></td>
                             <td><?php echo $row['created_at']?></td>
+                            <td><?php echo $row['referedBy']?></td>
                             <td><?php echo $row['isAdmin']?></td>
                             <td><?php echo $row['disabled']?></td>
                         </tr>
