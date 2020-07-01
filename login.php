@@ -102,12 +102,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="<?php echo (!empty($username_err)) ? 'has-error' : ''; ?> mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input type="text" name="username" class="mdl-textfield__input" value="<?php echo $username; ?>">
-                <label class="mdl-textfield__label" for="ibSmalls">Username</label>
+                <label class="mdl-textfield__label" for="username">Username</label>
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="<?php echo (!empty($password_err)) ? 'has-error' : ''; ?> mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input type="password" name="password" class="mdl-textfield__input">
-                <label class="mdl-textfield__label" for="ibSmalls">Password</label>
+                <label class="mdl-textfield__label" for="password">Password</label>
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
