@@ -72,45 +72,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-</head>
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-</head>
+    
+<?php include "head.php" ?>
+
+<style type="text/css">
+    .mdl-textfield{padding-bottom: 16px;}
+</style>
+
 <body>
-    <div class="mdc-card">
+    <div class="mdl-card">
     <div class="wrapper">
         <h2>Reset Password</h2>
         <p>Please fill out this form to reset your password.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
-            <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
-                <label>New Password</label>
-                <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
+                <input class="mdl-textfield__input" type="password" name="new_password" value="<?php echo $new_password; ?>">
+                <label class="mdl-textfield__label" for="Password">New Password</label>
                 <span class="help-block"><?php echo $new_password_err; ?></span>
             </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                <input class="mdl-textfield__input" type="password" name="confirm_password">
+                <label class="mdl-textfield__label" for="confirm_password">Confirm Password</label>
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="admin.php">Cancel</a>
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Submit">
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="admin.php">Cancel</a>
             </div>
         </form>
     </div>
