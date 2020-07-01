@@ -19,7 +19,7 @@ mysqli_query($link, "SET time_zone = 'US/Eastern';");
 // Sort Options
 
 // Basic config
-$stationName = "MORG";
+$stationName = "ZMOR";
 $preloadFlag = true;
 $outboundFlag = true;
 $otpFlag = false;
