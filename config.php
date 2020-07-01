@@ -1,6 +1,5 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+/* Database credentials */
 define('DB_SERVER', 'sql.start-time.com');
 define('DB_USERNAME', 'start_login');
 define('DB_PASSWORD', '_mMk_g!sHUF_XUb4uMcW');
