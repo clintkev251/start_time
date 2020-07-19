@@ -2,9 +2,17 @@
 <html lang="en">
 
 <?php
-require_once "config.php";
 
-$stationNumber = $_COOKIE["stationViewer"];
+$stationNumber = null;
+
+require_once "config.php";
+if (isset($_COOKIE["stationViewer"])) {
+    $stationNumber = $_COOKIE["stationViewer"];
+}
+else{
+    header('Location: select-station.php');
+    exit;
+}
 
 // Get existing data from database - Preload
 $sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'Preload' AND stationNumber = $stationNumber");
