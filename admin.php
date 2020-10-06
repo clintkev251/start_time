@@ -13,6 +13,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 require_once "config.php";
+if (isset($_COOKIE["stationNumber"])) {
+    $stationNumber = $_COOKIE["stationNumber"];
+}
+else{
+    header('Location: select-station-admin.php');
+    exit;
+}
 
 $currentUser = $_SESSION["username"];
 $sql = "SELECT * FROM users WHERE username = ?";
@@ -134,18 +141,13 @@ $sql = mysqli_query($link, "SELECT * FROM stations");
 ?>
 
 <a href="logout.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Home</a>
+<a href="select-station-admin.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Change Station</a>
 <a href="history.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit History</a>
 <a href="reset-password.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Change your password</a>
 <a href="register.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Add a user</a>
+<a href="station-editor.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Station Editor</a>
 <?php if($isAdmin['isAdmin'] == "y"){ ?> <a href="users.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">User Management</a> <?php } ?>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-    <select name="sel" size="1" onchange="this.form.submit();">
-            <option></option>
-        <?php while ($stationConfig = mysqli_fetch_assoc($sql)) { ?> 
-            <option value=<?php echo ($stationConfig['stationNumber']); if($stationConfig['stationNumber'] === $stationNumber){?> selected <?php } ?>><?php echo $stationConfig['stationAlpha']?>/<?php echo $stationConfig['stationNumber']?></option> 
-        <?php } ?>
-    </select>
-</form>
+
 <body>
     <?php 
     $sql = mysqli_query($link, "SELECT * FROM stations WHERE stationNumber = $stationNumber");
