@@ -8,6 +8,19 @@ if (isset($_POST["sel"])) {
 } else if (isset($_COOKIE["stationNumber"])) {
     $stationNumber = $_COOKIE["stationNumber"];
 }
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 include "head.php";
 ?>
 

@@ -1,7 +1,5 @@
 <?php 
 require_once "config.php";
-
-
 $stationNumber = null;
 if (isset($_POST["sel"])) {
     $expire = time() + 60 * 60 * 24 * 1;
@@ -10,6 +8,19 @@ if (isset($_POST["sel"])) {
 } else if (isset($_COOKIE["stationEditor"])) {
     $stationNumber = $_COOKIE["stationEditor"];
 }
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 include("head.php");
 $sql = mysqli_query($link, "SELECT * FROM stations WHERE stationNumber = $stationNumber");
 $sortData = mysqli_fetch_assoc($sql);
