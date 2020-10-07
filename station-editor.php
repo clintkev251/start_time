@@ -1,6 +1,6 @@
 <?php 
 require_once "config.php";
-include("head.php");
+
 
 $stationNumber = null;
 if (isset($_POST["sel"])) {
@@ -10,6 +10,7 @@ if (isset($_POST["sel"])) {
 } else if (isset($_COOKIE["stationEditor"])) {
     $stationNumber = $_COOKIE["stationEditor"];
 }
+include("head.php");
 $sql = mysqli_query($link, "SELECT * FROM stations WHERE stationNumber = $stationNumber");
 $sortData = mysqli_fetch_assoc($sql);
 $sql = mysqli_query($link, "SELECT * FROM fieldLegend WHERE stationNumber = $stationNumber AND sort = 'Preload'");
