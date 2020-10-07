@@ -7,8 +7,9 @@ if (isset($_COOKIE["stationViewer"])) {
     $stationNumber = $_COOKIE["stationViewer"];
 }
 else{
-    header("location: select-station.php");
-    exit;
+    $expire = time() + 60 * 60 * 24 * 360;
+    setcookie("stationViewer", "495", $expire, '/');
+    header("location: index.php");
 }
 
 // Get existing data from database - Preload
