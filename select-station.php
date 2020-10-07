@@ -1,13 +1,16 @@
-<?php include "head.php";
+<?php 
 require_once "config.php";
 $stationNumber = null;
+?>
+<?php
 if (isset($_POST["sel"])) {
     $expire = time() + 60 * 60 * 24 * 360;
-    setcookie("stationViewer", $_POST["sel"], $expire);
+    setcookie("stationViewer", $_POST["sel"], $expire, '/');
     header("location: index.php");
 } else if (isset($_COOKIE["stationViewer"])) {
     $stationNumber = $_COOKIE["stationViewer"];
 }
+include "head.php";
 ?>
 
 <html>

@@ -1,4 +1,4 @@
-<?php include "head.php";
+<?php
 require_once "config.php";
 $stationNumber = null;
 if (isset($_POST["sel"])) {
@@ -8,6 +8,7 @@ if (isset($_POST["sel"])) {
 } else if (isset($_COOKIE["stationNumber"])) {
     $stationNumber = $_COOKIE["stationNumber"];
 }
+include "head.php";
 ?>
 
 <html>
