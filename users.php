@@ -1,5 +1,10 @@
 <?php
 
+if($_COOKIE["isAdmin"] != "y"){
+    header("location: not-permitted.php");
+    exit;
+}
+
 // Initialize the session
 if(!isset($_SESSION)) 
     { 
@@ -11,6 +16,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+
 
 require_once "config.php";
 

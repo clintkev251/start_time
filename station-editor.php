@@ -8,6 +8,9 @@ if (isset($_POST["sel"])) {
 } else if (isset($_COOKIE["stationEditor"])) {
     $stationNumber = $_COOKIE["stationEditor"];
 }
+if($_COOKIE["isAdmin"] != "y"){
+    header("location = not-permitted.php");
+}
 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION)) 
