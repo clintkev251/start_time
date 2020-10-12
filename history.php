@@ -12,7 +12,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-require_once "config.php"; 
+require_once "config.php";
+if (isset($_COOKIE["stationNumber"])) {
+    $stationNumber = $_COOKIE["stationNumber"];
+}
+else{
+    header('Location: select-station-admin.php');
+    exit;
+}
 ?>
 <html>
 
@@ -27,28 +34,36 @@ require_once "config.php";
                 <tr>
                     <th>Sort</td>
                     <th>Date</td>
-                    <th>Prime</td>
-                    <th>Unload</td>
-                    <th>Vanlines</td>
-                    <th>Start</td>
-                    <th>Smalls</td>
+                    <th>Field 1</td>
+                    <th>Field 2</td>
+                    <th>Field 3</td>
+                    <th>Field 4</td>
+                    <th>Field 5</td>
+                    <th>Field 6</td>
+                    <th>Field 7</td>
+                    <th>Field 8</td>
+                    <th>Field 9</td>
                     <th>Updated By</td>
                     <th>Updated At</td>
                 </tr>
             </thead>
             <tbody>
             <?php
-                $results = mysqli_query($link, "SELECT * FROM timesHistory ORDER BY updateID DESC LIMIT 100");
+                $results = mysqli_query($link, "SELECT * FROM timesHistory WHERE stationNumber = $stationNumber ORDER BY updateID DESC LIMIT 100");
                 while($row = mysqli_fetch_assoc($results)) {
                 ?>
                     <tr>
                         <td><?php echo $row['sort']?></td>
                         <td><?php echo $row['date']?></td>
-                        <td><?php echo $row['prime']?></td>
-                        <td><?php echo $row['unload']?></td>
-                        <td><?php echo $row['vanlines']?></td>
-                        <td><?php echo $row['start']?></td>
-                        <td><?php echo $row['smalls']?></td>
+                        <td><?php echo $row['field1']?></td>
+                        <td><?php echo $row['field2']?></td>
+                        <td><?php echo $row['field3']?></td>
+                        <td><?php echo $row['field4']?></td>
+                        <td><?php echo $row['field5']?></td>
+                        <td><?php echo $row['field6']?></td>
+                        <td><?php echo $row['field7']?></td>
+                        <td><?php echo $row['field8']?></td>
+                        <td><?php echo $row['field9']?></td>
                         <td><?php echo $row['updatedBy']?></td>
                         <td><?php echo $row['updatedAt']?></td>
                     </tr>
