@@ -20,7 +20,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
-
+if($_COOKIE["isAdmin"] != "y"){
+    header("location: not-permitted.php");
+}
 include "head.php";
 ?>
 
