@@ -10,6 +10,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 // Include config file
 require_once "config.php";
+if (isset($_COOKIE["stationNumber"])) {
+    $stationNumber = $_COOKIE["stationNumber"];
+}
+else{
+    header('Location: select-station-admin.php');
+    exit;
+}
 
 $currentUser = $_SESSION["username"];
  
@@ -77,11 +84,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($regCode_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, referedBy) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, password, referedBy, siteAccess) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $referrer);
+            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $referrer, $stationNumber);
             
             // Set parameters
             $param_username = $username;
