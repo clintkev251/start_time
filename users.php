@@ -37,6 +37,21 @@ if($isAdmin['isAdmin'] != "y"){
 
 // Process form imput
 
+// Change user location
+if(isset($_POST['Location'])){
+    if(!empty($_POST['userChecked'])) {
+        $expire = time() + 60 * 60;
+        $users[] = "";
+        $i = 0;
+        foreach($_POST['userChecked'] as $value){
+            $users[$i] = $value;
+            $i++;
+        }
+        setcookie("userChange", serialize($users), $expire);
+        header("location: user-location.php");
+    }
+}
+
 // User Reset
 if(isset($_POST['Reset'])){
     if(!empty($_POST['userChecked'])) {    
@@ -118,6 +133,7 @@ if(isset($_POST['Remove'])){
                         <th class="mdl-data-table__cell--non-numeric">User</th>
                         <th>Created At</th>
                         <th>Refered By</th>
+                        <th>Location</th>
                         <th>Is Admin</th>
                         <th>Disabled</th>
                     </tr>
@@ -135,6 +151,7 @@ if(isset($_POST['Remove'])){
                             <td><?php echo $row['username']?></td>
                             <td><?php echo $row['created_at']?></td>
                             <td><?php echo $row['referedBy']?></td>
+                            <td><?php echo $row['siteAccess']?></td>
                             <td><?php echo $row['isAdmin']?></td>
                             <td><?php echo $row['disabled']?></td>
                         </tr>
@@ -146,6 +163,7 @@ if(isset($_POST['Remove'])){
                 </table>
             </br>
             <div class="mdl-card" style="overflow-x:auto;">
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Location" value="Location">Change Location</button>
                 <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Disable" value="Disable">Disable</button>
                 <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Enable" value="Enable">Enable</button>
                 <button class="mdl-button mdl-js-button mdl-button--accent" style="margin: auto;" type="submit" name="Admin" value="Admin">Make admin</button>

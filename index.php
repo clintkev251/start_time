@@ -7,9 +7,7 @@ if (isset($_COOKIE["stationViewer"])) {
     $stationNumber = $_COOKIE["stationViewer"];
 }
 else{
-    $expire = time() + 60 * 60 * 24 * 360;
-    setcookie("stationViewer", "495", $expire, '/');
-    header("location: index.php");
+    header("location: select-station.php");
 }
 
 // Get existing data from database - Preload
@@ -31,7 +29,7 @@ $sql = mysqli_query($link, "SELECT * FROM times WHERE sort = 'OTP' AND stationNu
 $otpTimes = mysqli_fetch_assoc($sql);
 
 $sql = mysqli_query($link, "SELECT * FROM fieldLegend WHERE sort = 'OTP' AND stationNumber = $stationNumber");
-$OTPFields = mysqli_fetch_assoc($sql);
+$otpFields = mysqli_fetch_assoc($sql);
 
 
 $sql = mysqli_query($link, "SELECT * FROM stations WHERE stationNumber = $stationNumber");

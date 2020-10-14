@@ -5,6 +5,6 @@
         Sorry! You do not have permission to access this page.
     </h3>
     <p>
-        Contact your administrator if you feel this is an error.
+        This area is only avalible for site administrators.
     </p>
 </div>
