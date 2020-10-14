@@ -117,7 +117,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 // Prepare a sql statement for otp
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ssssssssssssis", $otpDate, $otpNotes, $otp1, $otp2, $otp3, $otp4, $otp5, $otp6, $otp7, $otp8, $otp9, $updatedBy, $stationNumber, $OTP);
+            mysqli_stmt_bind_param($stmt, "ssssssssssssis", $otpDate, $otpNotes, $otp1, $otp2, $otp3, $otp4, $otp5, $otp6, $otp7, $otp8, $otp9, $updatedBy, $stationNumber, $otp);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         }

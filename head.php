@@ -1,3 +1,4 @@
+<?php $stationBackground = $_COOKIE["stationViewer"]; ?>
     <head>
         <title>Start Time</title>
         <link href="/cal/css/datepicker.min.css" rel="stylesheet" type="text/css">
@@ -22,4 +23,10 @@
         <script src="/cal/js/i18n/datepicker.en.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css" type="text/css" />
+        <?php 
+        if($stationBackground == 496){echo "<style>body,html{background: url(img/background-496.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style>";}
+        elseif($stationBackground == 466){echo "<style>body,html{background: url(img/background-466.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style>";}
+        elseif($stationBackground == 265){echo "<style>body,html{background: url(img/background-265.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style>";}
+        elseif($stationBackground == 276){echo "<style>body,html{background: url(img/background-276.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style>";}
+        ?>
     </head>
