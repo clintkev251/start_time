@@ -160,6 +160,7 @@ $sql = mysqli_query($link, "SELECT * FROM stations");
     $otpFields = mysqli_fetch_assoc($sql);
     ?>
     <div class="mdc-card">
+        <h3><?php echo $stationNumber ?></h3>
         <h4>Edit the following fields below:</h4>
             <form "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" style="width: 50%; margin: auto; text-align: center;">
                 <div <?php if($sortData['preloadFlag'] == 'n'){ ?> style=display:none <?php } ?>>
